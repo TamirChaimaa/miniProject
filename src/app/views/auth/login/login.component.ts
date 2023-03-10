@@ -8,6 +8,6 @@ export class LoginComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    alert("da7iya")
+    alert("da7iya youness")
   }
 }

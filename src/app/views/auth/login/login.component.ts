@@ -9,5 +9,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     alert("da7iya youness")
+    console.log("Youness Dassar" )
   }
 }

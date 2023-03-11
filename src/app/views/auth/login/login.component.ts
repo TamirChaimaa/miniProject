@@ -1,19 +1,39 @@
-import { Component, OnInit } from "@angular/core";
+import { Component,ElementRef,OnInit,ViewChild} from "@angular/core";
+import { NgForm } from '@angular/forms';
+
+
 
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
 })
-export class LoginComponent  {
-  constructor() {}
+export class LoginComponent implements OnInit {
+  input1: String;
+  input2: String ;
+  showAlert: boolean = false;
+  
+   
+  constructor( private elementRef : ElementRef) {}
 
-<<<<<<< HEAD
   ngOnInit(): void {
-    alert("da7iya youness")
-    console.log("Youness Dassar" )
-=======
-  test(){
-    console.log("youness abaa3");
->>>>>>> e89dd122f34995cd64903ef493b449d37eda5b93
+    
+    
   }
-}
+ 
+
+  submitForm() {
+    if (!this.input1 || !this.input2) {
+      this.showAlert = true;
+    }
+      else {
+        this.showAlert = false;
+      }
+    }
+  
+    closeAlert() {
+      this.showAlert = false;
+    }
+    }
+  
+
+

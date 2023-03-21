@@ -1,179 +1,1015 @@
 <div
-  class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0"
+  class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded"
+  [ngClass]="color === 'light' ? 'bg-white' : 'bg-red-900 text-white'"
 >
-  <div class="rounded-t bg-white mb-0 px-6 py-6">
-    <div class="text-center flex justify-between">
-      <h6 class="text-blueGray-700 text-xl font-bold">My account</h6>
-      <button
-        class="bg-red-600 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-        type="button"
-      >
-        Settings
-      </button>
+  <div class="rounded-t mb-0 px-4 py-3 border-0">
+    <div class="flex flex-wrap items-center">
+      <div class="relative flex space-between w-full px-4 max-w-full flex-grow flex-1 ">
+        <h3
+          class="font-semibold text-lg"
+          [ngClass]="color === 'light' ? 'text-blueGray-700' : 'text-black'"
+        >
+          Secretaries  Table
+        </h3>
+        <button class=" btnAddS bg-indigo-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          AddSecratary
+        </button>
+      </div>
     </div>
   </div>
-  <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
-    <form>
-      <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
-        User Information
-      </h6>
-      <div class="flex flex-wrap">
-        <div class="w-full lg:w-6/12 px-4">
-          <div class="relative w-full mb-3">
-            <label
-              class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-              htmlFor="grid-password"
+  <div class="block w-full overflow-x-auto">
+    <!-- Projects table -->
+    <table class="items-center w-full bg-transparent border-collapse">
+      <thead>
+        <tr>
+          <th
+            class="px-6 text-black  align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+          >
+           <b><h4 class = "text-emerald-500">Full Name</h4></b>
+          </th>
+          <th
+            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+          >
+          <b><h4 class = "text-emerald-500">Age</h4></b>
+          </th>
+          <th
+            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+          >
+          <b><h4 class = "text-emerald-500">Email</h4></b>
+          </th>
+      
+          <th
+            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+          >
+          <b><h4 class = "text-emerald-500">Salary</h4></b>
+          </th>
+          
+          <th
+          class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+          [ngClass]="
+            color === 'light'
+              ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+              : 'bg-red-800 text-red-300 border-red-700'
+          "
+        ><b><h4 class = "text-emerald-500">Situation</h4></b>
+       
+        </th>
+        <th
+        class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+        [ngClass]="
+          color === 'light'
+            ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+            : 'bg-red-800 text-red-300 border-red-700'
+        "
+      ><b><h4 class = "text-emerald-500">Modifiers</h4></b>
+     
+      </th>
+        <th
+          class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+          [ngClass]="
+            color === 'light'
+              ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+              : 'bg-red-800 text-red-300 border-red-700'
+          "
+        ><b><h4 class = "text-emerald-500">Profile</h4></b>
+      </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center"
+          >
+            
+            <span
+              class="ml-3 font-bold"
+              [ngClass]="color === 'light' ? 'text-blueGray-600' : 'text-white'"
             >
-              Username
-            </label>
-            <input
-              type="text"
-              class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-              value="lucky.jesse"
-            />
-          </div>
-        </div>
-        <div class="w-full lg:w-6/12 px-4">
-          <div class="relative w-full mb-3">
-            <label
-              class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-              htmlFor="grid-password"
+              Chaimaa Tamir
+            </span>
+          </th>
+          <td
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          >
+            22 
+          </td>
+          <td
+          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+        >
+          chaimaatamir43@gmail.com
+        </td>
+        <td
+        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+      >
+        5000DH
+      </td>
+      <td
+      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+    >
+    <button class="bg-emerald-500  hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded">
+     Actif
+    </button>
+    </td>
+    <td
+      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+    >
+    <div class ="flex  ">
+    <button class="bg-yellow-500  text-white font-bold py-2 px-4 rounded">
+     Update
+    </button>
+     <button class="bg-red-500  hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded">
+    Delete
+    </button>
+  </div>
+    </td>  
+    <td
+      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+    >
+    <button class="bg-indigo-500 px-6 hover:bg-gray-200 text-white font-bold py-2 px-4 rounded-full inline-flex items-center">
+      <i class="fas fa-user"></i>
+      <svg class="fill-current bg-white w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+        <path fill-rule="evenodd" d="M10 0a10 10 0 110 20 10 10 0 010-20zm0 18.75a8.75 8.75 0 110-17.5 8.75 8.75 0 010 17.5zm3.53-6.22a1.25 1.25 0 11-1.76 1.77 3.75 3.75 0 10-5.29 0 1.25 1.25 0 11-1.77-1.77 6.25 6.25 0 119.82 0z"/>
+      </svg>
+    </button>
+    
+    </td>     
+        </tr>
+        <tr>
+          <th
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center"
+          >
+          
+            <span
+              class="ml-3 font-bold"
+              [ngClass]="color === 'light' ? 'text-blueGray-600' : 'text-white'"
             >
-              Email address
-            </label>
-            <input
-              type="email"
-              class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-              value="jesse@example.com"
-            />
-          </div>
-        </div>
-        <div class="w-full lg:w-6/12 px-4">
-          <div class="relative w-full mb-3">
-            <label
-              class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-              htmlFor="grid-password"
+              Mohammed Tamir
+            </span>
+          </th>
+          <td
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          >
+            40
+          </td>
+          <td
+          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+        >
+          mohammedtamir78@gmail.com
+        </td>
+        <td
+        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+      >
+        6000DH
+      </td>
+      <td
+      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+    >
+    <button class="bg-emerald-500  hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded">
+     Actif
+    </button>
+    </td>
+  
+  <td
+    class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+  >
+  <div class ="flex  ">
+  <button class="bg-yellow-500  text-white font-bold py-2 px-4 rounded">
+   Update
+  </button>
+   <button class="bg-red-500  hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded">
+  Delete
+  </button>
+</div>
+  </td>
+  <td
+      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+    >
+    <button class="bg-indigo-500 px-6 hover:bg-gray-200 text-white font-bold py-2 px-4 rounded-full inline-flex items-center">
+      <i class="fas fa-user"></i>
+      <svg class="fill-current bg-white w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+        <path fill-rule="evenodd" d="M10 0a10 10 0 110 20 10 10 0 010-20zm0 18.75a8.75 8.75 0 110-17.5 8.75 8.75 0 010 17.5zm3.53-6.22a1.25 1.25 0 11-1.76 1.77 3.75 3.75 0 10-5.29 0 1.25 1.25 0 11-1.77-1.77 6.25 6.25 0 119.82 0z"/>
+      </svg>
+    </button>
+    
+    </td>  
+    
+          
+        </tr>
+        <tr>
+          <th
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center"
+          >
+            
+            <span
+              class="ml-3 font-bold"
+              [ngClass]="color === 'light' ? 'text-blueGray-600' : 'text-white'"
             >
-              First Name
-            </label>
-            <input
-              type="text"
-              class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-              value="Lucky"
-            />
-          </div>
-        </div>
-        <div class="w-full lg:w-6/12 px-4">
-          <div class="relative w-full mb-3">
-            <label
-              class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-              htmlFor="grid-password"
+              Youness Elhalloui
+            </span>
+          </th>
+          <td
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          >
+          34 
+          </td>
+          <td
+          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+        >
+            younessElhallaoui67@gmail
+        </td>
+        <td
+          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+        >
+           4000DH
+        </td>
+        <td
+          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+        >
+        <button class="bg-emerald-500  hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded">
+         Actif
+        </button>
+        </td>
+        <td
+        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+      >
+      <div class ="flex  ">
+      <button class="bg-yellow-500  text-white font-bold py-2 px-4 rounded">
+       Update
+      </button>
+       <button class="bg-red-500  hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded">
+      Delete
+      </button>
+    </div>
+      </td>
+      <td
+      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+    >
+    <button class="bg-indigo-500 px-6 hover:bg-gray-200 text-white font-bold py-2 px-4 rounded-full inline-flex items-center">
+      <i class="fas fa-user"></i>
+      <svg class="fill-current bg-white w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+        <path fill-rule="evenodd" d="M10 0a10 10 0 110 20 10 10 0 010-20zm0 18.75a8.75 8.75 0 110-17.5 8.75 8.75 0 010 17.5zm3.53-6.22a1.25 1.25 0 11-1.76 1.77 3.75 3.75 0 10-5.29 0 1.25 1.25 0 11-1.77-1.77 6.25 6.25 0 119.82 0z"/>
+      </svg>
+    </button>
+    
+    </td>  
+       
+        </tr>
+        <tr>
+          <th
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center"
+          >
+            
+            <span
+              class="ml-3 font-bold"
+              [ngClass]="color === 'light' ? 'text-blueGray-600' : 'text-white'"
             >
-              Last Name
-            </label>
-            <input
-              type="text"
-              class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-              value="Jesse"
-            />
-          </div>
-        </div>
-      </div>
+              Ayoub Mchimach
+            </span>
+          </th>
+          <td
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          >
+          23
+          </td>
+          <td
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          >
+          ayoubmchimech33@gmail.com
+          </td>
+          <td
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          >
+         7000 DH
+          </td>
+          <td
+      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+    >
+    <button class="bg-emerald-500  hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded">
+     Actif
+    </button>
+    </td>
+    <td
+    class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+  >
+  <div class ="flex  ">
+  <button class="bg-yellow-500  text-white font-bold py-2 px-4 rounded">
+   Update
+  </button>
+   <button class="bg-red-500  hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded">
+  Delete
+  </button>
+</div>
+  </td>
+  <td
+      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+    >
+    <button class="bg-indigo-500 px-6 hover:bg-gray-200 text-white font-bold py-2 px-4 rounded-full inline-flex items-center">
+      <i class="fas fa-user"></i>
+      <svg class="fill-current bg-white w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+        <path fill-rule="evenodd" d="M10 0a10 10 0 110 20 10 10 0 010-20zm0 18.75a8.75 8.75 0 110-17.5 8.75 8.75 0 010 17.5zm3.53-6.22a1.25 1.25 0 11-1.76 1.77 3.75 3.75 0 10-5.29 0 1.25 1.25 0 11-1.77-1.77 6.25 6.25 0 119.82 0z"/>
+      </svg>
+    </button>
+    
+    </td>  
+          
+        </tr>
+        <tr>
+          <th
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center"
+          >
+          
+            <span
+              class="ml-3 font-bold"
+              [ngClass]="color === 'light' ? 'text-blueGray-600' : 'text-white'"
+            >
+                Hafsa tamir
+            </span>
+          </th>
+          <td
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          >
+            28
+          </td>
+          <td
+          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+        >
+          hafsatamir5@gmail.com
+        </td>
+        <td
+        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+      >
+         5000DH
+      </td>
+      <td
+      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+    >
+    <button class="bg-emerald-500  hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded">
+     Actif
+    </button>
+    </td>
+    <td
+    class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+  >
+  <div class ="flex  ">
+  <button class="bg-yellow-500  text-white font-bold py-2 px-4 rounded">
+   Update
+  </button>
+   <button class="bg-red-500  hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded">
+  Delete
+  </button>
+</div>
+  </td>
+  <td
+  class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+>
+<button class="bg-indigo-500 px-6 hover:bg-gray-200 text-white font-bold py-2 px-4 rounded-full inline-flex items-center">
+  <i class="fas fa-user"></i>
+  <svg class="fill-current bg-white w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+    <path fill-rule="evenodd" d="M10 0a10 10 0 110 20 10 10 0 010-20zm0 18.75a8.75 8.75 0 110-17.5 8.75 8.75 0 010 17.5zm3.53-6.22a1.25 1.25 0 11-1.76 1.77 3.75 3.75 0 10-5.29 0 1.25 1.25 0 11-1.77-1.77 6.25 6.25 0 119.82 0z"/>
+  </svg>
+</button>
 
-      <hr class="mt-6 border-b-1 border-blueGray-300" />
-
-      <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
-        Contact Information
-      </h6>
-      <div class="flex flex-wrap">
-        <div class="w-full lg:w-12/12 px-4">
-          <div class="relative w-full mb-3">
-            <label
-              class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-              htmlFor="grid-password"
+</td>  
+        </tr>
+        <tr>
+          <th
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center"
+          >
+          
+            <span
+              class="ml-3 font-bold"
+              [ngClass]="color === 'light' ? 'text-blueGray-600' : 'text-white'"
             >
-              Address
-            </label>
-            <input
-              type="text"
-              class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-              value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"
-            />
-          </div>
-        </div>
-        <div class="w-full lg:w-4/12 px-4">
-          <div class="relative w-full mb-3">
-            <label
-              class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-              htmlFor="grid-password"
+                Hafsa tamir
+            </span>
+          </th>
+          <td
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          >
+            28
+          </td>
+          <td
+          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+        >
+          hafsatamir5@gmail.com
+        </td>
+        <td
+        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+      >
+         5000DH
+      </td>
+      <td
+      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+    >
+    <button class="bg-emerald-500  hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded">
+     Actif
+    </button>
+    </td>
+    <td
+    class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+  >
+  <div class ="flex  ">
+  <button class="bg-yellow-500  text-white font-bold py-2 px-4 rounded">
+   Update
+  </button>
+   <button class="bg-red-500  hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded">
+  Delete
+  </button>
+</div>
+  </td>
+  <td
+      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+    >
+    <button class="bg-indigo-500 px-6 hover:bg-gray-200 text-white font-bold py-2 px-4 rounded-full inline-flex items-center">
+      <i class="fas fa-user"></i>
+      <svg class="fill-current bg-white w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+        <path fill-rule="evenodd" d="M10 0a10 10 0 110 20 10 10 0 010-20zm0 18.75a8.75 8.75 0 110-17.5 8.75 8.75 0 010 17.5zm3.53-6.22a1.25 1.25 0 11-1.76 1.77 3.75 3.75 0 10-5.29 0 1.25 1.25 0 11-1.77-1.77 6.25 6.25 0 119.82 0z"/>
+      </svg>
+    </button>
+    
+    </td>  
+          
+        </tr>
+        <tr>
+          <th
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center"
+          >
+          
+            <span
+              class="ml-3 font-bold"
+              [ngClass]="color === 'light' ? 'text-blueGray-600' : 'text-white'"
             >
-              City
-            </label>
-            <input
-              type="email"
-              class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-              value="New York"
-            />
-          </div>
-        </div>
-        <div class="w-full lg:w-4/12 px-4">
-          <div class="relative w-full mb-3">
-            <label
-              class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-              htmlFor="grid-password"
+                Hafsa tamir
+            </span>
+          </th>
+          <td
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          >
+            28
+          </td>
+          <td
+          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+        >
+          hafsatamir5@gmail.com
+        </td>
+        <td
+        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+      >
+         5000DH
+      </td>
+      <td
+      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+    >
+    <button class="bg-emerald-500  hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded">
+     Actif
+    </button>
+    </td>
+    <td
+    class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+  >
+  <div class ="flex  ">
+  <button class="bg-yellow-500  text-white font-bold py-2 px-4 rounded">
+   Update
+  </button>
+   <button class="bg-red-500  hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded">
+  Delete
+  </button>
+</div>
+  </td>
+  <td
+      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+    >
+    <button class="bg-indigo-500 px-6 hover:bg-gray-200 text-white font-bold py-2 px-4 rounded-full inline-flex items-center">
+      <i class="fas fa-user"></i>
+      <svg class="fill-current bg-white w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+        <path fill-rule="evenodd" d="M10 0a10 10 0 110 20 10 10 0 010-20zm0 18.75a8.75 8.75 0 110-17.5 8.75 8.75 0 010 17.5zm3.53-6.22a1.25 1.25 0 11-1.76 1.77 3.75 3.75 0 10-5.29 0 1.25 1.25 0 11-1.77-1.77 6.25 6.25 0 119.82 0z"/>
+      </svg>
+    </button>
+    
+    </td>  
+          
+        </tr>
+        <tr>
+          <th
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center"
+          >
+          
+            <span
+              class="ml-3 font-bold"
+              [ngClass]="color === 'light' ? 'text-blueGray-600' : 'text-white'"
             >
-              Country
-            </label>
-            <input
-              type="text"
-              class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-              value="United States"
-            />
-          </div>
-        </div>
-        <div class="w-full lg:w-4/12 px-4">
-          <div class="relative w-full mb-3">
-            <label
-              class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-              htmlFor="grid-password"
+                Hafsa tamir
+            </span>
+          </th>
+          <td
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          >
+            28
+          </td>
+          <td
+          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+        >
+          hafsatamir5@gmail.com
+        </td>
+        <td
+        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+      >
+         5000DH
+      </td>
+      <td
+      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+    >
+    <button class="bg-emerald-500  hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded">
+     Actif
+    </button>
+    </td>
+    <td
+    class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+  >
+  <div class ="flex  ">
+  <button class="bg-yellow-500  text-white font-bold py-2 px-4 rounded">
+   Update
+  </button>
+   <button class="bg-red-500  hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded">
+  Delete
+  </button>
+</div>
+  </td>
+  <td
+      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+    >
+    <button class="bg-indigo-500 px-6 hover:bg-gray-200 text-white font-bold py-2 px-4 rounded-full inline-flex items-center">
+      <i class="fas fa-user"></i>
+      <svg class="fill-current bg-white w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+        <path fill-rule="evenodd" d="M10 0a10 10 0 110 20 10 10 0 010-20zm0 18.75a8.75 8.75 0 110-17.5 8.75 8.75 0 010 17.5zm3.53-6.22a1.25 1.25 0 11-1.76 1.77 3.75 3.75 0 10-5.29 0 1.25 1.25 0 11-1.77-1.77 6.25 6.25 0 119.82 0z"/>
+      </svg>
+    </button>
+    
+    </td>  
+          
+        </tr>
+        <tr>
+          <th
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center"
+          >
+          
+            <span
+              class="ml-3 font-bold"
+              [ngClass]="color === 'light' ? 'text-blueGray-600' : 'text-white'"
             >
-              Postal Code
-            </label>
-            <input
-              type="text"
-              class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-              value="Postal Code"
-            />
-          </div>
-        </div>
-      </div>
-
-      <hr class="mt-6 border-b-1 border-blueGray-300" />
-
-      <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
-        About Me
-      </h6>
-      <div class="flex flex-wrap">
-        <div class="w-full lg:w-12/12 px-4">
-          <div class="relative w-full mb-3">
-            <label
-              class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-              htmlFor="grid-password"
+                Hafsa tamir
+            </span>
+          </th>
+          <td
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          >
+            28
+          </td>
+          <td
+          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+        >
+          hafsatamir5@gmail.com
+        </td>
+        <td
+        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+      >
+         5000DH
+      </td>
+      <td
+      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+    >
+    <button class="bg-emerald-500  hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded">
+     Actif
+    </button>
+    </td>
+    <td
+    class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+  >
+  <div class ="flex  ">
+  <button class="bg-yellow-500  text-white font-bold py-2 px-4 rounded">
+   Update
+  </button>
+   <button class="bg-red-500  hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded">
+  Delete
+  </button>
+</div>
+  </td>
+  <td
+      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+    >
+    <button class="bg-indigo-500 px-6 hover:bg-gray-200 text-white font-bold py-2 px-4 rounded-full inline-flex items-center">
+      <i class="fas fa-user"></i>
+      <svg class="fill-current bg-white w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+        <path fill-rule="evenodd" d="M10 0a10 10 0 110 20 10 10 0 010-20zm0 18.75a8.75 8.75 0 110-17.5 8.75 8.75 0 010 17.5zm3.53-6.22a1.25 1.25 0 11-1.76 1.77 3.75 3.75 0 10-5.29 0 1.25 1.25 0 11-1.77-1.77 6.25 6.25 0 119.82 0z"/>
+      </svg>
+    </button>
+    
+    </td>  
+          
+        </tr>
+        <tr>
+          <th
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center"
+          >
+          
+            <span
+              class="ml-3 font-bold"
+              [ngClass]="color === 'light' ? 'text-blueGray-600' : 'text-white'"
             >
-              About me
-            </label>
-            <textarea
-              type="text"
-              class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-              rows="4"
+                Hafsa tamir
+            </span>
+          </th>
+          <td
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          >
+            28
+          </td>
+          <td
+          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+        >
+          hafsatamir5@gmail.com
+        </td>
+        <td
+        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+      >
+         5000DH
+      </td>
+      <td
+      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+    >
+    <button class="bg-emerald-500  hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded">
+     Actif
+    </button>
+    </td>
+    <td
+    class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+  >
+  <div class ="flex  ">
+  <button class="bg-yellow-500  text-white font-bold py-2 px-4 rounded">
+   Update
+  </button>
+   <button class="bg-red-500  hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded">
+  Delete
+  </button>
+</div>
+  </td>
+  <td
+      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+    >
+    <button class="bg-indigo-500 px-6 hover:bg-gray-200 text-white font-bold py-2 px-4 rounded-full inline-flex items-center">
+      <i class="fas fa-user"></i>
+      <svg class="fill-current bg-white w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+        <path fill-rule="evenodd" d="M10 0a10 10 0 110 20 10 10 0 010-20zm0 18.75a8.75 8.75 0 110-17.5 8.75 8.75 0 010 17.5zm3.53-6.22a1.25 1.25 0 11-1.76 1.77 3.75 3.75 0 10-5.29 0 1.25 1.25 0 11-1.77-1.77 6.25 6.25 0 119.82 0z"/>
+      </svg>
+    </button>
+    
+    </td>  
+          
+        </tr>
+        <tr>
+          <th
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center"
+          >
+          
+            <span
+              class="ml-3 font-bold"
+              [ngClass]="color === 'light' ? 'text-blueGray-600' : 'text-white'"
             >
-                  A beautiful UI Kit and Admin for Angular & Tailwind CSS. It is Free
-                  and Open Source.
-                </textarea
+                Hafsa tamir
+            </span>
+          </th>
+          <td
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          >
+            28
+          </td>
+          <td
+          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+        >
+          hafsatamir5@gmail.com
+        </td>
+        <td
+        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+      >
+         5000DH
+      </td>
+      <td
+      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+    >
+    <button class="bg-emerald-500  hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded">
+     Actif
+    </button>
+    </td>
+    <td
+    class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+  >
+  <div class ="flex  ">
+  <button class="bg-yellow-500  text-white font-bold py-2 px-4 rounded">
+   Update
+  </button>
+   <button class="bg-red-500  hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded">
+  Delete
+  </button>
+</div>
+  </td>
+  <td
+      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+    >
+    <button class="bg-indigo-500 px-6 hover:bg-gray-200 text-white font-bold py-2 px-4 rounded-full inline-flex items-center">
+      <i class="fas fa-user"></i>
+      <svg class="fill-current bg-white w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+        <path fill-rule="evenodd" d="M10 0a10 10 0 110 20 10 10 0 010-20zm0 18.75a8.75 8.75 0 110-17.5 8.75 8.75 0 010 17.5zm3.53-6.22a1.25 1.25 0 11-1.76 1.77 3.75 3.75 0 10-5.29 0 1.25 1.25 0 11-1.77-1.77 6.25 6.25 0 119.82 0z"/>
+      </svg>
+    </button>
+    
+    </td>  
+          
+        </tr>
+        <tr>
+          <th
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center"
+          >
+          
+            <span
+              class="ml-3 font-bold"
+              [ngClass]="color === 'light' ? 'text-blueGray-600' : 'text-white'"
             >
-          </div>
-        </div>
-      </div>
-    </form>
+                Hafsa tamir
+            </span>
+          </th>
+          <td
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          >
+            28
+          </td>
+          <td
+          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+        >
+          hafsatamir5@gmail.com
+        </td>
+        <td
+        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+      >
+         5000DH
+      </td>
+      <td
+      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+    >
+    <button class="bg-emerald-500  hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded">
+     Actif
+    </button>
+    </td>
+    <td
+    class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+  >
+  <div class ="flex  ">
+  <button class="bg-yellow-500  text-white font-bold py-2 px-4 rounded">
+   Update
+  </button>
+   <button class="bg-red-500  hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded">
+  Delete
+  </button>
+</div>
+  </td>
+  <td
+      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+    >
+    <button class="bg-indigo-500 px-6 hover:bg-gray-200 text-white font-bold py-2 px-4 rounded-full inline-flex items-center">
+      <i class="fas fa-user"></i>
+      <svg class="fill-current bg-white w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+        <path fill-rule="evenodd" d="M10 0a10 10 0 110 20 10 10 0 010-20zm0 18.75a8.75 8.75 0 110-17.5 8.75 8.75 0 010 17.5zm3.53-6.22a1.25 1.25 0 11-1.76 1.77 3.75 3.75 0 10-5.29 0 1.25 1.25 0 11-1.77-1.77 6.25 6.25 0 119.82 0z"/>
+      </svg>
+    </button>
+    
+    </td>  
+          
+        </tr>
+        <tr>
+          <th
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center"
+          >
+          
+            <span
+              class="ml-3 font-bold"
+              [ngClass]="color === 'light' ? 'text-blueGray-600' : 'text-white'"
+            >
+                Hafsa tamir
+            </span>
+          </th>
+          <td
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          >
+            28
+          </td>
+          <td
+          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+        >
+          hafsatamir5@gmail.com
+        </td>
+        <td
+        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+      >
+         5000DH
+      </td>
+      <td
+      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+    >
+    <button class="bg-emerald-500  hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded">
+     Actif
+    </button>
+    </td>
+    <td
+    class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+  >
+  <div class ="flex  ">
+  <button class="bg-yellow-500  text-white font-bold py-2 px-4 rounded">
+   Update
+  </button>
+   <button class="bg-red-500  hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded">
+  Delete
+  </button>
+</div>
+  </td>
+  <td
+      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+    >
+    <button class="bg-indigo-500 px-6 hover:bg-gray-200 text-white font-bold py-2 px-4 rounded-full inline-flex items-center">
+      <i class="fas fa-user"></i>
+      <svg class="fill-current bg-white w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+        <path fill-rule="evenodd" d="M10 0a10 10 0 110 20 10 10 0 010-20zm0 18.75a8.75 8.75 0 110-17.5 8.75 8.75 0 010 17.5zm3.53-6.22a1.25 1.25 0 11-1.76 1.77 3.75 3.75 0 10-5.29 0 1.25 1.25 0 11-1.77-1.77 6.25 6.25 0 119.82 0z"/>
+      </svg>
+    </button>
+    
+    </td>  
+          
+        </tr>
+        <tr>
+          <th
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center"
+          >
+          
+            <span
+              class="ml-3 font-bold"
+              [ngClass]="color === 'light' ? 'text-blueGray-600' : 'text-white'"
+            >
+                Hafsa tamir
+            </span>
+          </th>
+          <td
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          >
+            28
+          </td>
+          <td
+          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+        >
+          hafsatamir5@gmail.com
+        </td>
+        <td
+        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+      >
+         5000DH
+      </td>
+      <td
+      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+    >
+    <button class="bg-emerald-500  hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded">
+     Actif
+    </button>
+    </td>
+    <td
+    class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+  >
+  <div class ="flex  ">
+  <button class="bg-yellow-500  text-white font-bold py-2 px-4 rounded">
+   Update
+  </button>
+   <button class="bg-red-500  hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded">
+  Delete
+  </button>
+</div>
+  </td>
+  <td
+      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+    >
+    <button class="bg-indigo-500 px-6 hover:bg-gray-200 text-white font-bold py-2 px-4 rounded-full inline-flex items-center">
+      <i class="fas fa-user"></i>
+      <svg class="fill-current bg-white w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+        <path fill-rule="evenodd" d="M10 0a10 10 0 110 20 10 10 0 010-20zm0 18.75a8.75 8.75 0 110-17.5 8.75 8.75 0 010 17.5zm3.53-6.22a1.25 1.25 0 11-1.76 1.77 3.75 3.75 0 10-5.29 0 1.25 1.25 0 11-1.77-1.77 6.25 6.25 0 119.82 0z"/>
+      </svg>
+    </button>
+    
+    </td>  
+          
+        </tr>
+        <tr>
+          <th
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center"
+          >
+          
+            <span
+              class="ml-3 font-bold"
+              [ngClass]="color === 'light' ? 'text-blueGray-600' : 'text-white'"
+            >
+                Hafsa tamir
+            </span>
+          </th>
+          <td
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          >
+            28
+          </td>
+          <td
+          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+        >
+          hafsatamir5@gmail.com
+        </td>
+        <td
+        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+      >
+         5000DH
+      </td>
+      <td
+      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+    >
+    <button class="bg-emerald-500  hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded">
+     Actif
+    </button>
+    </td>
+    <td
+    class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+  >
+  <div class ="flex  ">
+  <button class="bg-yellow-500  text-white font-bold py-2 px-4 rounded">
+   Update
+  </button>
+   <button class="bg-red-500  hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded">
+  Delete
+  </button>
+</div>
+  </td>
+  <td
+      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+    >
+    <button class="bg-indigo-500 px-6 hover:bg-gray-200 text-white font-bold py-2 px-4 rounded-full inline-flex items-center">
+      <i class="fas fa-user"></i>
+      <svg class="fill-current bg-white w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+        <path fill-rule="evenodd" d="M10 0a10 10 0 110 20 10 10 0 010-20zm0 18.75a8.75 8.75 0 110-17.5 8.75 8.75 0 010 17.5zm3.53-6.22a1.25 1.25 0 11-1.76 1.77 3.75 3.75 0 10-5.29 0 1.25 1.25 0 11-1.77-1.77 6.25 6.25 0 119.82 0z"/>
+      </svg>
+    </button>
+    
+    </td>  
+          
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
+<!--td
+class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right"
+>
+<app-table-dropdown></app-table-dropdown>
+</td--->
+<style>
+  .flex button:not(:last-child) {
+    margin-right: 10px;
+  }
+  .btnAddS{
+    margin-left:1000px;
+  }
+</style>

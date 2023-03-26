@@ -20,6 +20,7 @@ import { IndexComponent } from "./views/index/index.component";
 import { LandingComponent } from "./views/landing/landing.component";
 import { ProfileComponent } from "./views/profile/profile.component";
 import { SecretaryformComponent } from "./views/admin/secretaryform/secretaryform.component";
+import { PatientformComponent } from "./views/admin/patientform/patientform.component";
 
 const routes: Routes = [
   // admin views
@@ -31,7 +32,8 @@ const routes: Routes = [
       { path: "settings", component: SettingsComponent },
       { path: "tables", component: TablesComponent },
       { path: "maps", component: MapsComponent },
-      { path: "nouveauchemin", component:SecretaryformComponent },
+      { path: "secretaryform", component:SecretaryformComponent },
+      { path: "patientform", component:PatientformComponent },
       //{ path: "", redirectTo: "dashboard", pathMatch: "full" },
     ],
   },

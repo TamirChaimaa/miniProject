@@ -9,10 +9,10 @@
           class="font-semibold text-lg"
           [ngClass]="color === 'light' ? 'text-blueGray-700' : 'text-black'"
         >
-           Patient  Table
+       Patient  Table
         </h3>
         <button class=" btnAddS bg-indigo-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-          AddPatient
+          <a [routerLink]="['/admin/patientform']">AddPatient</a> 
         </button>
       </div>
     </div>

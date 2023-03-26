@@ -19,6 +19,7 @@ import { RegisterComponent } from "./views/auth/register/register.component";
 import { IndexComponent } from "./views/index/index.component";
 import { LandingComponent } from "./views/landing/landing.component";
 import { ProfileComponent } from "./views/profile/profile.component";
+import { SecretaryformComponent } from "./views/admin/secretaryform/secretaryform.component";
 
 const routes: Routes = [
   // admin views
@@ -30,7 +31,8 @@ const routes: Routes = [
       { path: "settings", component: SettingsComponent },
       { path: "tables", component: TablesComponent },
       { path: "maps", component: MapsComponent },
-      { path: "", redirectTo: "dashboard", pathMatch: "full" },
+      { path: "nouveauchemin", component:SecretaryformComponent },
+      //{ path: "", redirectTo: "dashboard", pathMatch: "full" },
     ],
   },
   // auth views
@@ -41,14 +43,20 @@ const routes: Routes = [
       { path: "login", component: LoginComponent },
       { path: "register", component: RegisterComponent },
       { path: "", redirectTo: "login", pathMatch: "full" },
+    
+      
     ],
   },
+
   // no layout views
   { path: "profile", component: ProfileComponent },
   //{ path: "landing", component: LandingComponent },
   { path: "", component: LandingComponent },
-  { path: "**", redirectTo: "", pathMatch: "full" },
+  //{ path: "**", redirectTo: "", pathMatch: "full" },
+ 
+
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

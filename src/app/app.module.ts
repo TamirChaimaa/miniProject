@@ -1,5 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
+import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -47,6 +48,9 @@ import { PagesDropdownComponent } from "./components/dropdowns/pages-dropdown/pa
 import { NotificationDropdownComponent } from "./components/dropdowns/notification-dropdown/notification-dropdown.component";
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user-dropdown.component";
+import { SecretaryformComponent } from './views/admin/secretaryform/secretaryform.component';
+import { CardsecretaryformComponent } from './components/cards/cardsecretaryform/cardsecretaryform.component';
+
 
 @NgModule({
   declarations: [
@@ -84,6 +88,10 @@ import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user
     IndexComponent,
     LandingComponent,
     ProfileComponent,
+    SecretaryformComponent,
+    CardsecretaryformComponent,
+
+   
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

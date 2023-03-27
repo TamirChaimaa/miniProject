@@ -50,8 +50,9 @@ import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user-dropdown.component";
 import { SecretaryformComponent } from './views/admin/secretaryform/secretaryform.component';
 import { CardsecretaryformComponent } from './components/cards/cardsecretaryform/cardsecretaryform.component';
-import { PatientformComponent } from './views/admin/patientform/patientform.component';
-import { CardpatientformComponent } from './components/cards/cardpatientform/cardpatientform.component';
+import { PatientformComponent } from "./views/admin/patientform/patientform.component";
+import { CardpatientformComponent } from "./components/cards/cardpatientform/cardpatientform.component";
+
 
 
 
@@ -95,6 +96,7 @@ import { CardpatientformComponent } from './components/cards/cardpatientform/car
     CardsecretaryformComponent,
     PatientformComponent,
     CardpatientformComponent,
+
 
 
    

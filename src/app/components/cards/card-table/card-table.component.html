@@ -104,6 +104,15 @@
           "
         ><b><h4 class = "text-emerald-500">Profile</h4></b>
       </th>
+      <th
+      class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+      [ngClass]="
+        color === 'light'
+          ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+          : 'bg-red-800 text-red-300 border-red-700'
+      "
+    ><b><h4 class = "text-emerald-500">Appointment</h4></b>
+  </th>
         </tr>
       </thead>
       <tbody>
@@ -168,7 +177,13 @@
       </svg>
     </button>
     
-    </td>     
+    
+    </td>  
+    <td
+    class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+  >
+    <p>29/03/2023</p>
+  </td>   
         </tr>
      
       </tbody>
@@ -185,7 +200,9 @@ class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-now
     margin-right: 10px;
   }
   .btnAddS{
-    margin-left:1000px;
+    margin-left:1100px;
   }
-
+  tr:hover {
+    background-color: beige;
+  }
 </style>

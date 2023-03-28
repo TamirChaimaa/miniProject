@@ -11,9 +11,9 @@ import { AuthComponent } from "./layouts/auth/auth.component";
 
 // admin views
 import { DashboardComponent } from "./views/admin/dashboard/dashboard.component";
-import { MapsComponent } from "./views/admin/maps/maps.component";
-import { SettingsComponent } from "./views/admin/settings/settings.component";
-import { TablesComponent } from "./views/admin/tables/tables.component";
+import { MapsComponent } from "./views/admin/Schedule/maps.component";
+import { SettingsComponent } from "./views/admin/secretaries/settings.component";
+import { TablesComponent } from "./views/admin/patients/tables.component";
 
 // auth views
 import { LoginComponent } from "./views/auth/login/login.component";
@@ -52,7 +52,6 @@ import { SecretaryformComponent } from './views/admin/secretaryform/secretaryfor
 import { CardsecretaryformComponent } from './components/cards/cardsecretaryform/cardsecretaryform.component';
 import { PatientformComponent } from "./views/admin/patientform/patientform.component";
 import { CardpatientformComponent } from "./components/cards/cardpatientform/cardpatientform.component";
-
 
 
 

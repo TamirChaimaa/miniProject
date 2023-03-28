@@ -7,9 +7,9 @@ import { AuthComponent } from "./layouts/auth/auth.component";
 
 // admin views
 import { DashboardComponent } from "./views/admin/dashboard/dashboard.component";
-import { MapsComponent } from "./views/admin/maps/maps.component";
-import { SettingsComponent } from "./views/admin/settings/settings.component";
-import { TablesComponent } from "./views/admin/tables/tables.component";
+import { MapsComponent } from "./views/admin/Schedule/maps.component";
+import { SettingsComponent } from "./views/admin/secretaries/settings.component";
+import { TablesComponent } from "./views/admin/patients/tables.component";
 
 // auth views
 import { LoginComponent } from "./views/auth/login/login.component";
@@ -52,7 +52,7 @@ const routes: Routes = [
 
   // no layout views
   { path: "profile", component: ProfileComponent },
-  //{ path: "landing", component: LandingComponent },
+  { path: "landing", component: LandingComponent },
   { path: "", component: LandingComponent },
   //{ path: "**", redirectTo: "", pathMatch: "full" },
  

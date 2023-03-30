@@ -19,29 +19,20 @@ export class CardStatsComponent implements OnInit {
     return this._statTitle;
   }
   set statTitle(statTitle: string) {
-    this._statTitle = statTitle === undefined ? "350,897" : statTitle;
+    this._statTitle = statTitle === undefined ? "" : statTitle;
   }
-  private _statTitle = "350,897";
+  private _statTitle = "";
 
-  // The value must match one of up or down
-  @Input()
-  get statArrow(): string {
-    return this._statArrow;
-  }
-  set statArrow(statArrow: string) {
-    this._statArrow =
-      statArrow !== "down" && statArrow !== "up" ? "up" : statArrow;
-  }
-  private _statArrow = "up";
+ 
 
   @Input()
   get statPercent(): string {
     return this._statPercent;
   }
   set statPercent(statPercent: string) {
-    this._statPercent = statPercent === undefined ? "3.48" : statPercent;
+    this._statPercent = statPercent === undefined ? undefined : statPercent;
   }
-  private _statPercent = "3.48";
+  private _statPercent = "";
 
   // can be any of the text color utilities
   // from tailwindcss
@@ -55,15 +46,7 @@ export class CardStatsComponent implements OnInit {
   }
   private _statPercentColor = "text-emerald-500";
 
-  @Input()
-  get statDescripiron(): string {
-    return this._statDescripiron;
-  }
-  set statDescripiron(statDescripiron: string) {
-    this._statDescripiron =
-      statDescripiron === undefined ? "Since last month" : statDescripiron;
-  }
-  private _statDescripiron = "Since last month";
+
 
   @Input()
   get statIconName(): string {

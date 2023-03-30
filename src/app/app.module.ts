@@ -1,5 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
+import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -10,9 +11,9 @@ import { AuthComponent } from "./layouts/auth/auth.component";
 
 // admin views
 import { DashboardComponent } from "./views/admin/dashboard/dashboard.component";
-import { MapsComponent } from "./views/admin/maps/maps.component";
-import { SettingsComponent } from "./views/admin/settings/settings.component";
-import { TablesComponent } from "./views/admin/tables/tables.component";
+import { ScheduleComponent } from "./views/admin/Schedule/schedule.component";
+import { SecretariesComponent } from "./views/admin/secretaries/secretaries.component";
+import { PatientsComponent } from "./views/admin/patients/patients.component";
 
 // auth views
 import { LoginComponent } from "./views/auth/login/login.component";
@@ -31,7 +32,6 @@ import { CardBarChartComponent } from "./components/cards/card-bar-chart/card-ba
 import { CardLineChartComponent } from "./components/cards/card-line-chart/card-line-chart.component";
 import { CardPageVisitsComponent } from "./components/cards/card-page-visits/card-page-visits.component";
 import { CardProfileComponent } from "./components/cards/card-profile/card-profile.component";
-import { CardSettingsComponent } from "./components/cards/card-settings/card-settings.component";
 import { CardSocialTrafficComponent } from "./components/cards/card-social-traffic/card-social-traffic.component";
 import { CardStatsComponent } from "./components/cards/card-stats/card-stats.component";
 import { CardTableComponent } from "./components/cards/card-table/card-table.component";
@@ -40,13 +40,18 @@ import { FooterComponent } from "./components/footers/footer/footer.component";
 import { FooterSmallComponent } from "./components/footers/footer-small/footer-small.component";
 import { HeaderStatsComponent } from "./components/headers/header-stats/header-stats.component";
 import { IndexNavbarComponent } from "./components/navbars/index-navbar/index-navbar.component";
-import { MapExampleComponent } from "./components/maps/map-example/map-example.component";
 import { IndexDropdownComponent } from "./components/dropdowns/index-dropdown/index-dropdown.component";
 import { TableDropdownComponent } from "./components/dropdowns/table-dropdown/table-dropdown.component";
 import { PagesDropdownComponent } from "./components/dropdowns/pages-dropdown/pages-dropdown.component";
 import { NotificationDropdownComponent } from "./components/dropdowns/notification-dropdown/notification-dropdown.component";
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user-dropdown.component";
+import { SecretaryFormComponent } from './views/admin/secretary-form/secretary-form.component';
+import { CardSecretaryFormComponent } from './components/cards/card-secretary-form/card-secretary-form.component';
+import { PatientFormComponent } from "./views/admin/patient-form/patient-form.component";
+import { CardPatientFormComponent } from "./components/cards/card-patient-form/card-patient-form.component";
+
+
 
 @NgModule({
   declarations: [
@@ -65,25 +70,31 @@ import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user
     FooterAdminComponent,
     CardPageVisitsComponent,
     CardProfileComponent,
-    CardSettingsComponent,
     CardSocialTrafficComponent,
     CardStatsComponent,
     CardTableComponent,
     HeaderStatsComponent,
-    MapExampleComponent,
     AuthNavbarComponent,
     AdminNavbarComponent,
     IndexNavbarComponent,
     AdminComponent,
     AuthComponent,
-    MapsComponent,
-    SettingsComponent,
-    TablesComponent,
+    ScheduleComponent,
+    SecretariesComponent,
+    PatientsComponent,
     LoginComponent,
     RegisterComponent,
     IndexComponent,
     LandingComponent,
     ProfileComponent,
+    SecretaryFormComponent,
+    CardSecretaryFormComponent,
+    PatientFormComponent,
+    CardPatientFormComponent,
+
+
+
+   
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

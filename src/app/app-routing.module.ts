@@ -7,9 +7,9 @@ import { AuthComponent } from "./layouts/auth/auth.component";
 
 // admin views
 import { DashboardComponent } from "./views/admin/dashboard/dashboard.component";
-import { MapsComponent } from "./views/admin/maps/maps.component";
-import { SettingsComponent } from "./views/admin/settings/settings.component";
-import { TablesComponent } from "./views/admin/tables/tables.component";
+import { ScheduleComponent } from "./views/admin/Schedule/schedule.component";
+import { SecretariesComponent } from "./views/admin/secretaries/secretaries.component";
+import { PatientsComponent } from "./views/admin/patients/patients.component";
 
 // auth views
 import { LoginComponent } from "./views/auth/login/login.component";
@@ -19,6 +19,8 @@ import { RegisterComponent } from "./views/auth/register/register.component";
 import { IndexComponent } from "./views/index/index.component";
 import { LandingComponent } from "./views/landing/landing.component";
 import { ProfileComponent } from "./views/profile/profile.component";
+import { SecretaryFormComponent } from "./views/admin/secretary-form/secretary-form.component";
+import { PatientFormComponent } from "./views/admin/patient-form/patient-form.component";
 
 const routes: Routes = [
   // admin views
@@ -27,10 +29,12 @@ const routes: Routes = [
     component: AdminComponent,
     children: [
       { path: "dashboard", component: DashboardComponent },
-      { path: "settings", component: SettingsComponent },
-      { path: "tables", component: TablesComponent },
-      { path: "maps", component: MapsComponent },
-      { path: "", redirectTo: "dashboard", pathMatch: "full" },
+      { path: "secritaries", component: SecretariesComponent },
+      { path: "patients", component: PatientsComponent },
+      { path: "schedule", component: ScheduleComponent },
+      { path: "secretaryForm", component: SecretaryFormComponent },
+      { path: "patientForm", component: PatientFormComponent },
+      //{ path: "", redirectTo: "dashboard", pathMatch: "full" },
     ],
   },
   // auth views
@@ -41,14 +45,20 @@ const routes: Routes = [
       { path: "login", component: LoginComponent },
       { path: "register", component: RegisterComponent },
       { path: "", redirectTo: "login", pathMatch: "full" },
+    
+      
     ],
   },
+
   // no layout views
   { path: "profile", component: ProfileComponent },
   { path: "landing", component: LandingComponent },
-  { path: "", component: IndexComponent },
-  { path: "**", redirectTo: "", pathMatch: "full" },
+  { path: "", component: LandingComponent },
+  //{ path: "**", redirectTo: "", pathMatch: "full" },
+ 
+
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

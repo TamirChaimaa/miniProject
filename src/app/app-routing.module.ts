@@ -16,47 +16,27 @@ import { LoginComponent } from "./views/auth/login/login.component";
 import { RegisterComponent } from "./views/auth/register/register.component";
 
 // no layouts views
-import { IndexComponent } from "./views/index/index.component";
+// import { IndexComponent } from "./views/index/index.component";
 import { LandingComponent } from "./views/landing/landing.component";
 import { ProfileComponent } from "./views/profile/profile.component";
-import { SecretaryFormComponent } from "./views/admin/secretary-form/secretary-form.component";
-import { PatientFormComponent } from "./views/admin/patient-form/patient-form.component";
 
 const routes: Routes = [
   // admin views
   {
-    path: "admin",
-    component: AdminComponent,
-    children: [
-      { path: "dashboard", component: DashboardComponent },
-      { path: "secritaries", component: SecretariesComponent },
-      { path: "patients", component: PatientsComponent },
-      { path: "schedule", component: ScheduleComponent },
-      { path: "secretaryForm", component: SecretaryFormComponent },
-      { path: "patientForm", component: PatientFormComponent },
-      //{ path: "", redirectTo: "dashboard", pathMatch: "full" },
-    ],
+    path: 'admin',
+    loadChildren: () => import("./views/admin/admin.module").then(m => m.AdminModule),
+    // canActivate: [GuestGuard]
   },
   // auth views
   {
     path: "auth",
-    component: AuthComponent,
-    children: [
-      { path: "login", component: LoginComponent },
-      { path: "register", component: RegisterComponent },
-      { path: "", redirectTo: "login", pathMatch: "full" },
-    
-      
-    ],
-  },
+    loadChildren: () => import("./views/auth/auth.module").then(m => m.AuthModule),
 
-  // no layout views
+  },
+  
   { path: "profile", component: ProfileComponent },
   { path: "landing", component: LandingComponent },
   { path: "", component: LandingComponent },
-  //{ path: "**", redirectTo: "", pathMatch: "full" },
- 
-
 ];
 
 

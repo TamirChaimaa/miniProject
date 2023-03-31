@@ -1,0 +1,50 @@
+<div class="  relative flex flex-col min-w-0 break-words  mb-6 shadow-lg bg-blueGray-50 rounded mt-12">
+  <div class="rounded-t mb-0 px-4 py-3 border-0 ">
+    <div class="">
+      <b>
+        <h1 class="  text-center  text-4xl ">Schedule Form</h1>
+      </b>
+    </div>
+    <form class="">
+      <div class="flex flex-wrap -mx-3 mb-6">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label class=" text-emerald-500 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+            for="grid-first-name">
+            Enter CIN of patient
+          </label>
+          <input [ngClass]="errors ? 'input-class border border-red-500  bg-gray-200' : 'input-class'"
+            id="grid-first-name" type="text" placeholder="AW34556">
+          <p *ngIf="false" class="text-red-500 text-xs italic">Please fill out this field.</p>
+        </div>
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label class=" text-emerald-500 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+            for="grid-first-name">
+            Select a date
+          </label>
+          <input [ngClass]="errors ? 'input-class border border-red-500  bg-gray-200' : 'input-class'"
+            id="grid-first-name" type="date">
+          <p *ngIf="false" class="text-red-500 text-xs italic">Please fill out this field.</p>
+        </div>
+
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label class=" text-emerald-500 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+            for="grid-first-name">
+            Select a time
+          </label>
+          <select id="grid-first-name" type="date"
+            [ngClass]="errors ? 'input-class border border-red-500  bg-gray-200' : 'input-class'">
+            <option *ngFor="let ped of peroids">{{ped}}</option>
+          </select>
+          <p *ngIf="false" class="text-red-500 text-xs italic">Please fill out this field.</p>
+        </div>
+        <div class="flex justify-center w-full ">
+          <button class="bg-emerald-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">
+            Submit
+          </button>
+        </div>
+      </div>
+
+    </form>
+
+  </div>
+</div>

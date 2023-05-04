@@ -19,12 +19,12 @@ export class SecretariesComponent implements OnInit {
       sort: true,
     },
     {
-      name: "age",
-      title: "age",
+      name: "CIN",
+      title: "CIN",
     },
      {
-      name: "appointment",
-      title: "appointment",
+      name: "PhoneNumber",
+      title: "PhoneNumber",
       sort: true,
     },
     {

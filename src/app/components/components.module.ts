@@ -24,6 +24,7 @@ import { CardScheduleFormComponent } from './cards/card-schedule-form/card-sched
 import { CardSecretaryFormComponent } from './cards/card-secretary-form/card-secretary-form.component';
 import { CardPatientFormComponent } from './cards/card-patient-form/card-patient-form.component';
 import { RouterModule } from '@angular/router';
+import { CardDocumentFormComponent } from './cards/card-document-form/card-document-form.component';
 
 
 
@@ -51,7 +52,8 @@ import { RouterModule } from '@angular/router';
     IndexNavbarComponent,
     CardScheduleFormComponent,
     CardSecretaryFormComponent,
-    CardPatientFormComponent
+    CardPatientFormComponent,
+    CardDocumentFormComponent
   ],
   imports: [
     CommonModule,
@@ -80,7 +82,9 @@ import { RouterModule } from '@angular/router';
     IndexNavbarComponent,
     CardScheduleFormComponent,
     CardSecretaryFormComponent,
-    CardPatientFormComponent
+    CardPatientFormComponent,
+    CardDocumentFormComponent
+
   ]
 })
 export class ComponentsModule { }

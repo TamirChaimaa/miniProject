@@ -4,10 +4,9 @@
       <div class="rounded-t mb-0 px-4 py-3 border-0">
         <!-- component -->
         <div class="flex items-center justify-center py-8 px-4">
-          <!--- more free and premium Tailwind CSS components at https://tailwinduikit.com/ --->
 
-          <div class="max-w-sm w-full shadow-lg">
-            <div class="md:p-8 p-5 dark:bg-gray-800 bg-white rounded-t">
+          <div class="w-full shadow-lg">
+            <div class="md:p-8 p-5 dark:bg-gray-800 bg-white rounded-t  ">
               <div class="px-4 flex items-center justify-between">
                 <span tabindex="0"
                   class="focus:outline-none  text-base font-bold dark:text-gray-100 text-gray-800">{{date.currentMonth}}
@@ -79,13 +78,14 @@
                   <tbody>
                     <tr *ngFor="let col of days">
                       <td class="pt-6" *ngFor="let day of col">
-                        <div class="px-2 py-2 cursor-pointer flex w-full justify-center" *ngIf="day.length == 0">{{ '' }}
+                        <div class="px-2 py-2 cursor-pointer flex w-full justify-center" *ngIf="day.length == 0">{{ ''
+                          }}
                         </div>
                         <div (click)="setEvent(day)" class="px-2 py-2 cursor-pointer flex w-full justify-center"
                           *ngIf="day.length != 0 && day != date.daySelected &&  (day != date.currentDay || date.currentMonth != date.month )">
                           <p class="text-base text-gray-500 dark:text-gray-100 font-medium">{{ day }}</p>
                         </div>
-                        <div  class="w-full h-full"
+                        <div class="w-full h-full"
                           *ngIf="day.length != 0 && day != date.daySelected && day == date.currentDay && date.currentMonth == date.month && date.year == date.currentYear">
                           <div class="flex items-center justify-center w-full rounded-full cursor-pointer">
                             <a role="link" tabindex="0"
@@ -95,14 +95,14 @@
                           </div>
                         </div>
                         <div (click)="setEvent(day)" class="w-full h-full"
-                        *ngIf="day.length != 0 && day == date.daySelected">
-                        <div class="flex items-center justify-center w-full rounded-full cursor-pointer">
-                          <a role="link" tabindex="0"
-                            class="  text-base w-8 h-8 flex items-center justify-center font-medium text-white bg-teal-500 rounded-full">
-                            {{day}}
-                          </a>
+                          *ngIf="day.length != 0 && day == date.daySelected">
+                          <div class="flex items-center justify-center w-full rounded-full cursor-pointer">
+                            <a role="link" tabindex="0"
+                              class="  text-base w-8 h-8 flex items-center justify-center font-medium text-white bg-teal-500 rounded-full">
+                              {{day}}
+                            </a>
+                          </div>
                         </div>
-                      </div>
                       </td>
 
                   </tbody>
@@ -111,8 +111,8 @@
             </div>
             <div class="md:py-8 py-5 md:px-16 px-5  bg-gray-50 rounded-b">
               <div class="flex justify-end px-3">
-                <button  class="  bg-indigo-500 hover:bg-blue-700 text-white  py-2 px-4 rounded">
-                  <a [routerLink]="['/admin/scheduleForm']" >
+                <button class="  bg-indigo-500 hover:bg-blue-700 text-white  py-2 px-4 rounded">
+                  <a [routerLink]="['/admin/schedule/scheduleForm']">
                     <i class="fas fa-plus"></i> new event
                   </a>
                 </button>

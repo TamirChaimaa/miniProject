@@ -1,5 +1,6 @@
-import { Component,ElementRef,OnInit,ViewChild} from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { NgForm } from '@angular/forms';
+import { ToastrNotificationService } from "src/app/services/toastr-notification.service";
 
 
 
@@ -9,31 +10,23 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   input1: String;
-  input2: String ;
+  input2: String;
   showAlert: boolean = false;
-  
-   
-  constructor( private elementRef : ElementRef) {}
+
+
+  constructor(private toastrNotificationService: ToastrNotificationService) { }
 
   ngOnInit(): void {
-    
-    
+
+
   }
- 
+
 
   submitForm() {
-    if (!this.input1 || !this.input2) {
-      this.showAlert = true;
-    }
-      else {
-        this.showAlert = false;
-      }
-    }
-  
-    closeAlert() {
-      this.showAlert = false;
-    }
-    }
-  
+    this.toastrNotificationService.showError('Oops, Your email or password  is incorrect', '')
+  }
+
+}
+
 
 

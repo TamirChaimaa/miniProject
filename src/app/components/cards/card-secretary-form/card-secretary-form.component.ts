@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
   templateUrl: './card-secretary-form.component.html',
 })
 export class CardSecretaryFormComponent {
+  errors;
   @Input()
   get color(): string {
     return this._color;

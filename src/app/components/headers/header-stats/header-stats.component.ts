@@ -32,6 +32,13 @@ export class HeaderStatsComponent implements OnInit {
     statPercentColor:"text-orange-500",
     statIconName:"fas fa-notes-medical",
     statIconColor:"bg-indigo-500"
+  },
+  {
+    statSubtitle: 'Number of Documents',
+    statTitle: '4',
+    statPercentColor:"text-orange-500",
+    statIconName:"fas fa-file",
+    statIconColor:"bg-indigo-500"
   }
 ]
   constructor() {}

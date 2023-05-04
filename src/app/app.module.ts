@@ -2,6 +2,9 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { RouterModule } from '@angular/router';
 
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 
@@ -25,6 +28,8 @@ import { ProfileComponent } from "./views/profile/profile.component";
 
 
 import { ComponentsModule } from "./components/components.module";
+import { HttpClient, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { HttpRequestInterceptor } from "./interceptors/http-request.interceptor";
 
 
 
@@ -41,10 +46,24 @@ import { ComponentsModule } from "./components/components.module";
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-right',
+      newestOnTop: true,
+      tapToDismiss: true,
+      autoDismiss: true,
+      maxOpened: 4,
+      timeOut: 100000
+    }),
     AppRoutingModule,
     ComponentsModule
   ],
-  providers: [],
+  providers: [HttpClient, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttpRequestInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

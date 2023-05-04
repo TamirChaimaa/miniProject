@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from "@angular/core";
 
 @Component({
   selector: "app-card-table",
@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from "@angular/core";
 export class CardTableComponent implements OnInit {
   @Input() headers;
   @Input() createUrl;
+  @Input() getUrl;
   buttons = []
   @Input() title = '';
   @Input()
@@ -24,6 +25,7 @@ export class CardTableComponent implements OnInit {
     this.initButtons();
   }
 
+
   initButtons(){
     this.buttons.push({
       icon: 'fas fa-eye',
@@ -39,4 +41,38 @@ export class CardTableComponent implements OnInit {
       style: 'bg-indigo-500'
     })
   }
+
+
+  getData(){
+    if(this.getUrl == "secritaries"){
+      return [
+        22,
+        'tamir chaimaa',
+        'H255224',
+        '+212653395053',
+        'Jan 23, 2023, 11:24:50 AM'
+      ]
+    }
+    if(this.getUrl == "patients"){
+      return [
+        22,
+        'tamir chaimaa',
+        '23',
+        '29/03/2023 de 8 a 8:30',
+        'Jan 23, 2023, 11:24:50 AM'
+      ]
+    }
+
+    if(this.getUrl == "documents"){
+      return [
+        22,
+        'tamir chaimaa',
+        '29/03/2023 de 8:30 a 9',
+        'En attente',
+        'Jan 23, 2023, 11:24:50 AM'
+      ]
+    }
+    return []
+  }
+  
 }

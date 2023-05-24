@@ -2,3 +2,19 @@
 .input-class{
     @apply appearance-none block w-full text-gray-700  rounded py-3 px-4 mb-3 ;
  }
+
+ @keyframes pulse {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  .skeleton-animation {
+    animation: pulse 1.5s infinite;
+  }

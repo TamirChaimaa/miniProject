@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { NgForm } from '@angular/forms';
+import { NgForm, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { Router } from "@angular/router";
+import { AuthService } from "src/app/services/auth.service";
 import { ToastrNotificationService } from "src/app/services/toastr-notification.service";
 
 
@@ -9,12 +11,22 @@ import { ToastrNotificationService } from "src/app/services/toastr-notification.
   templateUrl: "./login.component.html",
 })
 export class LoginComponent implements OnInit {
-  input1: String;
-  input2: String;
+
+  form = new UntypedFormGroup({
+    email: new UntypedFormControl('', [
+      Validators.required,
+    ]),
+    password: new UntypedFormControl('', [
+      Validators.required,
+    ]),
+  });
+  submitLoading = false;
+  errors;
   showAlert: boolean = false;
 
 
-  constructor(private toastrNotificationService: ToastrNotificationService) { }
+  constructor(private toastrNotificationService: ToastrNotificationService, 
+    private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -22,8 +34,33 @@ export class LoginComponent implements OnInit {
   }
 
 
-  submitForm() {
-    this.toastrNotificationService.showError('Oops, Your email or password  is incorrect', '')
+  get email(){
+    return this.form.get('email')
+  }
+
+  get password(){
+    return this.form.get('password')
+  }
+
+
+  save() {
+    this.submitLoading = true;
+    this.authService.login({email: this.email.value, password: this.password.value}).
+    subscribe((resp: any) => {
+      console.log(resp);
+      this.authService.setToken(resp.data.token)
+      AuthService.setUser(resp.data.user)
+      this.submitLoading = false;
+      // /admin/dashboard
+      this.router.navigateByUrl('/admin/dashboard')
+
+    }, err => {
+      console.log(err);
+      this.submitLoading = false;
+      this.errors = err;
+      this.toastrNotificationService.showError(err, '')
+    })
+    
   }
 
 }

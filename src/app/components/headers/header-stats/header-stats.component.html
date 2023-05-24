@@ -6,6 +6,7 @@
       <div class="flex flex-wrap header_div  justify-center ">
         <div class="w-full lg:w-6/12 xl:w-3/12 px-4" *ngFor="let cardState of cardsStates">
           <app-card-stats
+          [loading]="loadingCardStates"
             [statSubtitle]="cardState.statSubtitle"
             [statTitle]="cardState.statTitle"
             [statPercentColor]="cardState.statPercentColor"

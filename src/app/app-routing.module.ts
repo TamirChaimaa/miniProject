@@ -11,32 +11,40 @@ import { ScheduleComponent } from "./views/admin/Schedule/schedule.component";
 import { SecretariesComponent } from "./views/admin/secretaries/secretaries.component";
 import { PatientsComponent } from "./views/admin/patients/patients.component";
 
-// auth views
-import { LoginComponent } from "./views/auth/login/login.component";
-import { RegisterComponent } from "./views/auth/register/register.component";
 
-// no layouts views
-// import { IndexComponent } from "./views/index/index.component";
 import { LandingComponent } from "./views/landing/landing.component";
 import { ProfileComponent } from "./views/profile/profile.component";
+import { AuthGuard } from "./guards/auth.guard";
+import { GuestGuard } from "./guards/guest.guard";
 
 const routes: Routes = [
   // admin views
   {
     path: 'admin',
     loadChildren: () => import("./views/admin/admin.module").then(m => m.AdminModule),
-    // canActivate: [GuestGuard]
+    canActivate: [AuthGuard]
   },
   // auth views
   {
     path: "auth",
     loadChildren: () => import("./views/auth/auth.module").then(m => m.AuthModule),
+    canActivate: [GuestGuard]
+
 
   },
   
-  { path: "profile", component: ProfileComponent },
-  { path: "landing", component: LandingComponent },
-  { path: "", component: LandingComponent },
+  { 
+    path: "profile", component: ProfileComponent ,
+    canActivate: [AuthGuard]
+  },
+  { 
+    path: "landing", component: LandingComponent ,
+    canActivate: [GuestGuard]
+},
+  { 
+    path: "", component: LandingComponent,
+    canActivate: [GuestGuard]
+},
 ];
 
 

@@ -26,10 +26,11 @@
           </svg>
         </div>
         <input type="text"
+          #query
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg border-emerald-500   block w-full pl-10 p-2.5  "
           placeholder="Search" required>
       </div>
-      <button type="submit"
+      <button (click)="search(query.value)" type="submit"
         class="p-2.5 ml-2 text-sm font-medium text-white bg-emerald-500 rounded-lg border border-emerald-500 ">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -66,21 +67,28 @@
           </th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td *ngFor="let data of getData()" class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-            {{data}}
+      <tbody *ngIf="!skeletonLoading.isLoadingData">
+        <tr  *ngFor="let rows of data; let index = index" >
+          <td *ngFor="let col of rows"  class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+            {{col}}
           </td>
           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
             <div class="flex  ">
-              <button *ngFor="let btn of buttons" [class]="btn.style + ' text-white font-bold p-2 px-3 rounded'">
+              <button (click)="cickAction(btn, rows[0], index)" *ngFor="let btn of buttons" [class]="btn.style + ' text-white font-bold p-2 px-3 rounded'">
                 <i [class]="btn.icon"></i>
               </button>
             </div>
           </td>
         </tr>
-
       </tbody>
+      <tr *ngFor="let elm of skeletonLoading.rows">
+        <ng-container *ngIf="skeletonLoading.isLoadingData">
+          <td  *ngFor="let elm of skeletonLoading.cols" class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+            <!-- Skeleton Animation -->
+            <div class="skeleton-animation bg-blueGray-200 h-4 w-full mb-2"></div>
+          </td>
+        </ng-container>
+      </tr>
     </table>
   </div>
 </div>

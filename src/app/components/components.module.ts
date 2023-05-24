@@ -25,6 +25,7 @@ import { CardSecretaryFormComponent } from './cards/card-secretary-form/card-sec
 import { CardPatientFormComponent } from './cards/card-patient-form/card-patient-form.component';
 import { RouterModule } from '@angular/router';
 import { CardDocumentFormComponent } from './cards/card-document-form/card-document-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -57,7 +58,10 @@ import { CardDocumentFormComponent } from './cards/card-document-form/card-docum
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+
   ],
   exports: [
     CardBarChartComponent,

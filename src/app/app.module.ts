@@ -28,7 +28,7 @@ import { ProfileComponent } from "./views/profile/profile.component";
 
 
 import { ComponentsModule } from "./components/components.module";
-import { HttpClient, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { HttpClient, HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { HttpRequestInterceptor } from "./interceptors/http-request.interceptor";
 
 
@@ -47,6 +47,7 @@ import { HttpRequestInterceptor } from "./interceptors/http-request.interceptor"
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
 
     ToastrModule.forRoot({
       positionClass: 'toast-top-right',
@@ -54,7 +55,8 @@ import { HttpRequestInterceptor } from "./interceptors/http-request.interceptor"
       tapToDismiss: true,
       autoDismiss: true,
       maxOpened: 4,
-      timeOut: 100000
+      timeOut: 
+      2000
     }),
     AppRoutingModule,
     ComponentsModule

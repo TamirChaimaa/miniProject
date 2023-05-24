@@ -1,5 +1,10 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { DataService } from "src/app/services/data.service";
 import { ModulesMessengerService } from "src/app/services/modules-messenger.service";
+import { ToastrNotificationService } from "src/app/services/toastr-notification.service";
+import { Appointement } from "src/common/models/Appointement";
+import Swal from "sweetalert2";
 
 @Component({
   selector: "app-schedule",
@@ -19,7 +24,15 @@ export class ScheduleComponent implements OnInit {
     day: null,
     daySelected: null
   };
-  constructor(private modulesMessengerService: ModulesMessengerService) { }
+  dataLoading = false;
+
+  eventDays = [];
+
+  appointements: Appointement[] = []
+  constructor(private modulesMessengerService: ModulesMessengerService,
+    private dataService: DataService,
+    private toastrNotificationService: ToastrNotificationService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.modulesMessengerService.sendMessage({ type: 'header-title', data: 'Schedule' });
@@ -36,21 +49,21 @@ export class ScheduleComponent implements OnInit {
     this.date.month = this.date.currentMonth
     this.date.year = this.date.currentYear;
 
-
+    this.getData();
     this.modifyCalendery()
   }
 
-  updateDate(value){
+  updateDate(value) {
     const currentIndex = this.monthNames.indexOf(this.date.currentMonth);
-    if((currentIndex + value) == this.monthNames.length ){
+    if ((currentIndex + value) == this.monthNames.length) {
       this.date.currentMonth = this.monthNames[0];
       this.date.currentYear++
       this.modifyCalendery()
       return;
     }
-    if((currentIndex + value) < 0){
+    if ((currentIndex + value) < 0) {
       this.date.currentMonth = this.monthNames[this.monthNames.length - 1]
-      this.date.currentYear --;
+      this.date.currentYear--;
       this.modifyCalendery()
       return;
     }
@@ -58,21 +71,21 @@ export class ScheduleComponent implements OnInit {
     this.modifyCalendery()
   }
 
-  modifyCalendery(){
+  modifyCalendery() {
     const firstDay = new Date(this.date.currentYear, this.monthNames.indexOf(this.date.currentMonth), 1);
-    const lastDay = new Date(this.date.currentYear, this.monthNames.indexOf(this.date.currentMonth)+1, 0);
+    const lastDay = new Date(this.date.currentYear, this.monthNames.indexOf(this.date.currentMonth) + 1, 0);
     const first = firstDay.getDay() == 0 ? 7 : firstDay.getDay()
     this.days = []
-    let cpt=1;
+    let cpt = 1;
     let arr = [];
-    for(let i=1; i<=7; i++){
+    for (let i = 1; i <= 7; i++) {
       arr = []
-      for(let j=1; j<=7; j++){
-        if(cpt < first || cpt-first+1 > lastDay.getDate()){
+      for (let j = 1; j <= 7; j++) {
+        if (cpt < first || cpt - first + 1 > lastDay.getDate()) {
           arr.push('')
-        } 
-        else{
-          arr.push(cpt-first+1)
+        }
+        else {
+          arr.push(cpt - first + 1)
         }
         cpt++
       }
@@ -81,17 +94,83 @@ export class ScheduleComponent implements OnInit {
     }
 
     this.days.forEach((arr: any[], index) => {
-      if(index > 4)
-      this.days[index] = arr.filter(function (el) {
-        return el != '';
-      });
+      if (index > 4)
+        this.days[index] = arr.filter(function (el) {
+          return el != '';
+        });
     })
-    
+
   }
 
-  setEvent(day){
+  setEvent(day) {
     this.date.daySelected = day;
-    
+  }
+
+  isEventHere(day?) {
+    const d = day ? day : this.date.currentDay
+    return this.eventDays.indexOf(day) != -1
+  }
+
+  getData() {
+    this.dataLoading = true;
+    this.dataService.sendGetRequest('appointments', {}).subscribe((resp: any) => {
+      resp.data.forEach(element => {
+        this.appointements.push(new Appointement(element));
+      });
+      this.setEventDays()
+      this.dataLoading = false;
+
+    });
+  }
+
+  setEventDays() {
+    const m = this.monthNames.indexOf(this.date.month);
+    this.appointements.forEach((apnt: Appointement) => {
+      if (apnt.checkDateOfEvent(this.date.year, m))
+        this.eventDays.push(apnt.getDay())
+
+    })
+  }
+
+  getApntsByDay() {
+    const d = this.date.daySelected ? this.date.daySelected : this.date.currentDay
+    const apnts = []
+    this.appointements.forEach((apnt: Appointement) => {
+      if (apnt.checkDateOfEvent(this.date.year, this.monthNames.indexOf(this.date.month))) {
+        if (d == apnt.getDay()) {
+          apnts.push(apnt);
+        }
+      }
+    })
+
+    return apnts;
+  }
+
+  clickAction(type, apnt) {
+    if (type == 'remove') {
+      Swal.fire({
+        icon: 'info',
+        title: '',
+        text: 'Did you want to remove this appointment ?',
+        showCancelButton: true,
+        confirmButtonText: 'OK',
+        cancelButtonText: 'Cancel',
+      }).then((response: any) => {
+        if(response.isConfirmed){
+          // loading remove button
+          this.dataService.sendDeleteRequest('appointments' + '/' + apnt.id).subscribe((resp: any) => {
+            console.log('remove', resp);
+            this.toastrNotificationService.showSuccess('Remove Success', '')
+            const index = this.appointements.findIndex(elm => elm.id == apnt.id);
+            this.appointements.splice(index, 1)
+          }, err => {
+          })
+        }
+      });
+    }else{
+      this.router.navigateByUrl('admin/schedule/scheduleForm?apnt='+JSON.stringify(apnt));
+
+    }
   }
 
 

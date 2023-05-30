@@ -69,8 +69,15 @@
       </thead>
       <tbody *ngIf="!skeletonLoading.isLoadingData">
         <tr  *ngFor="let rows of data; let index = index" >
-          <td *ngFor="let col of rows"  class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-            {{col}}
+          <td *ngFor="let col of rows; let index1 = index"  class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+            <div *ngIf="col == 'undefined'">
+              <button (click)="setAppointement(index)" type="button" class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 bg-gray-100 hover:text-blue-700 focus:z-10  bg-gray-200 ">
+                set Appointement
+              </button> 
+            </div>
+            <span *ngIf="col != 'undefined'">
+              {{ col }}
+            </span>
           </td>
           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
             <div class="flex  ">

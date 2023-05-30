@@ -101,15 +101,15 @@ export class CardTableComponent implements OnInit, OnChanges {
       resp.data.forEach(element => {
         if(this.getUrl == 'patients'){
           this.realData.push({
-            id: element.id, 
+            cin: element.attributes.CIN,
             fullname: element.attributes.FullName,
             age: element.attributes.Age,
-            cin: element.attributes.CIN,
             phoneNumber: element.attributes.PhoneNumber,
             dateOfBirth: element.attributes.DateOfBirth,
             adresse: element.attributes.Adress
           }) 
-          this.data.push([element.id, element.attributes.FullName, element.attributes.Age, '29/03/2023 de 8:30 a 9'
+          this.data.push([element.attributes.CIN, element.attributes.FullName, element.attributes.Age,
+            element.appointments == 'null' ? 'undefined' : element.appointments.attributes.start_time  +' - '+element.appointments.attributes.end_time
             , element.attributes.created_at] )
         }
 
@@ -156,6 +156,14 @@ export class CardTableComponent implements OnInit, OnChanges {
       }
     }
     
+    if(btn.type == 'show'){
+      if(this.getUrl == 'patients'){
+        console.log(this.data);
+        
+        this.router.navigateByUrl('admin/patients/profile?patient='+JSON.stringify(this.realData[index]));
+      }
+    }
+    
   }
 
   search(query){
@@ -163,6 +171,13 @@ export class CardTableComponent implements OnInit, OnChanges {
       console.log(query);
       
     }
+  }
+
+  setAppointement(ind: number){
+    console.log(this.realData[ind]);
+    
+    this.router.navigateByUrl('/admin/schedule/scheduleForm?cin='+this.realData[ind].cin)
+    
   }
 
 }

@@ -10,6 +10,7 @@ import { ScheduleFormComponent } from './Schedule/schedule-form/schedule-form.co
 import { ScheduleComponent } from './Schedule/schedule.component';
 import { SecretariesComponent } from './secretaries/secretaries.component';
 import { SecretaryFormComponent } from './secretaries/secretary-form/secretary-form.component';
+import { CardProfileComponent } from 'src/app/components/cards/card-profile/card-profile.component';
 
 const routes: Routes = [
   { 
@@ -22,6 +23,7 @@ const routes: Routes = [
       { path: "schedule", component: ScheduleComponent },
       { path: "secritaries/secretaryForm", component: SecretaryFormComponent },
       { path: "patients/patientForm", component: PatientFormComponent },
+      { path: "patients/profile", component: CardProfileComponent },
       { path: "schedule/scheduleForm", component: ScheduleFormComponent },
       { path: "documents", component: DocumentsComponent },
       { path: "documents/documentForm", component: DocumentFormComponent },

@@ -71,7 +71,7 @@ export class CardScheduleFormComponent implements OnInit {
     console.log(this.startTime);
 
     const res = {
-      cin: this.cin.value,
+      patient_CIN: this.cin.value,
       start_time: this.startTime + ":00",
       end_time: this.endTime + ":00",
       reason: this.reason.value,
@@ -80,19 +80,6 @@ export class CardScheduleFormComponent implements OnInit {
     return res;
   }
 
-
-  // ex(d) {
-  //   const currentDate = new Date(d);
-
-  //   const year = currentDate.getFullYear();
-  //   const month = String(currentDate.getMonth() + 1).padStart(2, '0');
-  //   const day = String(currentDate.getDate()).padStart(2, '0');
-  //   const hours = String(currentDate.getHours()).padStart(2, '0');
-  //   const minutes = String(currentDate.getMinutes()).padStart(2, '0');
-  //   const seconds = String(currentDate.getSeconds()).padStart(2, '0');
-  //   const formattedDateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-  //   return formattedDateTime;
-  // }
 
   save() {
     this.errors = undefined
@@ -121,6 +108,8 @@ export class CardScheduleFormComponent implements OnInit {
     this.route.queryParams.subscribe((resp: any) => {
       if (resp.apnt)
         this.appntId = JSON.parse(resp.apnt).id
+      if(resp.cin)
+        this.cin.setValue(resp.cin)
       // this.form.patchValue(JSON.parse(resp.apnt))
     })
     for (let index = 9; index < 18; index = index + 1) {

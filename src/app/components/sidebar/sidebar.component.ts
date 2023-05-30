@@ -25,6 +25,7 @@ export class SidebarComponent implements OnInit {
     }
     );
     if(result.isConfirmed){
+      localStorage.clear()
       this.router.navigateByUrl("/landing")
     }
     

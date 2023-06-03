@@ -34,8 +34,8 @@ const routes: Routes = [
   },
   
   { 
-    path: "profile", component: ProfileComponent ,
-    canActivate: [AuthGuard]
+    path: "profile", 
+    loadChildren: () => import("./views/profile/profile.module").then(m => m.ProfileModule),
   },
   { 
     path: "landing", component: LandingComponent ,

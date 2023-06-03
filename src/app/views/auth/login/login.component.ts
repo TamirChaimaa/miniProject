@@ -50,9 +50,14 @@ export class LoginComponent implements OnInit {
       console.log(resp);
       this.authService.setToken(resp.data.token)
       AuthService.setUser(resp.data.user)
+      localStorage.setItem('role', resp.data.role)
       this.submitLoading = false;
       // /admin/dashboard
-      this.router.navigateByUrl('/admin/dashboard')
+      if(resp.data.role == 'user'){
+        this.router.navigateByUrl('/profile')
+      }else{
+        this.router.navigateByUrl('/admin/dashboard')
+      }
 
     }, err => {
       console.log(err);

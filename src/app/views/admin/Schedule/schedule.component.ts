@@ -11,166 +11,64 @@ import Swal from "sweetalert2";
   templateUrl: "./schedule.component.html",
 })
 export class ScheduleComponent implements OnInit {
-  days = []
-  monthNames = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
-  ];
-  date = {
-    currentMonth: null,
-    currentYear: null,
-    currentDay: null,
-    month: null,
-    year: null,
-    day: null,
-    daySelected: null
-  };
-  dataLoading = false;
-
-  eventDays = [];
-
-  appointements: Appointement[] = []
-  constructor(private modulesMessengerService: ModulesMessengerService,
-    private dataService: DataService,
-    private toastrNotificationService: ToastrNotificationService,
-    private router: Router) { }
+dataLoading;
+data;
+type =  'table'
+constructor(
+  private modulesMessengerService: ModulesMessengerService,
+  private dataService: DataService,
+  private toastrNotificationService: ToastrNotificationService,
+  private router: Router) { }
 
   ngOnInit(): void {
     this.modulesMessengerService.sendMessage({ type: 'header-title', data: 'Schedule' });
     this.init()
   }
 
-  init() {
-    const d = new Date();
-    this.date.currentDay = d.getDate();
-    this.date.currentMonth = this.monthNames[d.getMonth()]
-    this.date.currentYear = d.getFullYear();
-
-    this.date.day = this.date.currentDay;
-    this.date.month = this.date.currentMonth
-    this.date.year = this.date.currentYear;
-
-    this.getData();
-    this.modifyCalendery()
+  init(){
+    this.getData('')
   }
-
-  updateDate(value) {
-    const currentIndex = this.monthNames.indexOf(this.date.currentMonth);
-    if ((currentIndex + value) == this.monthNames.length) {
-      this.date.currentMonth = this.monthNames[0];
-      this.date.currentYear++
-      this.modifyCalendery()
-      return;
-    }
-    if ((currentIndex + value) < 0) {
-      this.date.currentMonth = this.monthNames[this.monthNames.length - 1]
-      this.date.currentYear--;
-      this.modifyCalendery()
-      return;
-    }
-    this.date.currentMonth = this.monthNames[this.monthNames.indexOf(this.date.currentMonth) + value]
-    this.modifyCalendery()
-  }
-
-  modifyCalendery() {
-    const firstDay = new Date(this.date.currentYear, this.monthNames.indexOf(this.date.currentMonth), 1);
-    const lastDay = new Date(this.date.currentYear, this.monthNames.indexOf(this.date.currentMonth) + 1, 0);
-    const first = firstDay.getDay() == 0 ? 7 : firstDay.getDay()
-    this.days = []
-    let cpt = 1;
-    let arr = [];
-    for (let i = 1; i <= 7; i++) {
-      arr = []
-      for (let j = 1; j <= 7; j++) {
-        if (cpt < first || cpt - first + 1 > lastDay.getDate()) {
-          arr.push('')
-        }
-        else {
-          arr.push(cpt - first + 1)
-        }
-        cpt++
-      }
-      // if(this.days.length > 7 ) return
-      this.days.push(arr)
-    }
-
-    this.days.forEach((arr: any[], index) => {
-      if (index > 4)
-        this.days[index] = arr.filter(function (el) {
-          return el != '';
-        });
-    })
-
-  }
-
-  setEvent(day) {
-    this.date.daySelected = day;
-  }
-
-  isEventHere(day?) {
-    const d = day ? day : this.date.currentDay
-    return this.eventDays.indexOf(day) != -1
-  }
-
-  getData() {
+  getData(query) {
     this.dataLoading = true;
-    this.dataService.sendGetRequest('appointments', {}).subscribe((resp: any) => {
-      resp.data.forEach(element => {
-        this.appointements.push(new Appointement(element));
-      });
-      this.setEventDays()
+    this.dataService.sendGetRequest('appointments', {cinSearchQuery: query }).subscribe((resp: any) => {
+      this.data = resp.data
       this.dataLoading = false;
 
     });
   }
 
-  setEventDays() {
-    const m = this.monthNames.indexOf(this.date.month);
-    this.appointements.forEach((apnt: Appointement) => {
-      if (apnt.checkDateOfEvent(this.date.year, m))
-        this.eventDays.push(apnt.getDay())
+ 
 
-    })
-  }
 
-  getApntsByDay() {
-    const d = this.date.daySelected ? this.date.daySelected : this.date.currentDay
-    const apnts = []
-    this.appointements.forEach((apnt: Appointement) => {
-      if (apnt.checkDateOfEvent(this.date.year, this.monthNames.indexOf(this.date.month))) {
-        if (d == apnt.getDay()) {
-          apnts.push(apnt);
-        }
+
+
+  changeStatus(apnt){
+    Swal.fire({
+      icon: 'info',
+      title: '',
+      text: 'Did you want to accept this appointment to pass ?',
+      showCancelButton: true,
+      showDenyButton: true,
+      confirmButtonText: 'Accept',
+      denyButtonText: 'Refused',
+      cancelButtonText: 'Cancel',
+    }).then((response: any) => {
+      console.log(response);
+      
+      if(!response.isDismissed){
+        const statusClicked = response.isConfirmed ?  'waiting to pass' : 'refused';
+        const d = [...this.data];
+        this.dataService.sendPutRequest('appointments' + '/' + apnt.id + '/changeStatus', 
+        {currentStatus: statusClicked}).subscribe((resp: any) => {
+          apnt.status = resp.data.attributes.status;
+          const index = this.data.findIndex(elm=> elm.id == apnt.id);
+          d[index].attributes.status = resp.data.attributes.status
+          this.toastrNotificationService.showSuccess('change status Success', '')
+          this.data = [...d];
+        }, err => {
+        })
       }
-    })
-
-    return apnts;
-  }
-
-  clickAction(type, apnt) {
-    if (type == 'remove') {
-      Swal.fire({
-        icon: 'info',
-        title: '',
-        text: 'Did you want to remove this appointment ?',
-        showCancelButton: true,
-        confirmButtonText: 'OK',
-        cancelButtonText: 'Cancel',
-      }).then((response: any) => {
-        if(response.isConfirmed){
-          // loading remove button
-          this.dataService.sendDeleteRequest('appointments' + '/' + apnt.id).subscribe((resp: any) => {
-            console.log('remove', resp);
-            this.toastrNotificationService.showSuccess('Remove Success', '')
-            const index = this.appointements.findIndex(elm => elm.id == apnt.id);
-            this.appointements.splice(index, 1)
-          }, err => {
-          })
-        }
-      });
-    }else{
-      this.router.navigateByUrl('admin/schedule/scheduleForm?apnt='+JSON.stringify(apnt));
-
-    }
+    });
   }
 
 

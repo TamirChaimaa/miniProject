@@ -22,6 +22,22 @@
             </span>
            </p>
       </div>
+
+      <div class="relative w-full my-3">
+        <label class="block uppercase text-black text-xs font-bold mb-2" htmlFor="Email">
+          Email
+        </label>
+        <input [ngClass]="errors &&  errors.Email ? 'border-2 border-red-500' : ''" id="Email" name="Email"
+         formControlName="email" type="email"
+          class="border-0 px-3 py-3 placeholder-blueGray-300 text-black bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+          placeholder="Email" />
+
+          <p  *ngIf="errors  && errors.Email" class="mt-2 text-xs text-red-600 dark:text-red-500" >
+            <span class="block" *ngFor="let err of errors.Email">
+             {{ err }}
+            </span>
+           </p>
+      </div>
     
       <div class="relative w-full my-3">
         <label class="block uppercase text-black text-xs font-bold mb-2" htmlFor="email">
@@ -131,6 +147,21 @@
 
           <p  *ngIf="errors  && errors.Password_Confirmation" class="mt-2 text-xs text-red-600 dark:text-red-500" >
             <span class="block" *ngFor="let err of errors.Password_Confirmation">
+             {{ err }}
+            </span>
+           </p>
+      </div>
+
+      
+      <div class="w-full md:w-1/2 px-3 my-6 ">
+        <label class=" text-emerald-500 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+          for="grid-first-name">
+          import cin
+        </label>
+        <input formControlName="cinImg"   (change)="importCin($event)" [ngClass]="errors && errors.cin_image ? 'input-class border border-red-500  bg-gray-200' : 'input-class'"
+          id="grid-first-name" type="file">
+          <p  *ngIf="errors  && errors.cin_image" class="mt-2 text-xs text-red-600 dark:text-red-500" >
+            <span class="block" *ngFor="let err of errors.cin_image">
              {{ err }}
             </span>
            </p>

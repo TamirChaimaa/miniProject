@@ -8,6 +8,10 @@ import { ModulesMessengerService } from "src/app/services/modules-messenger.serv
 export class PatientsComponent implements OnInit {
   headers = [
     {
+      name: "ID",
+      title: "id",
+    },
+    {
       name: "CIN",
       title: "cin",
     },

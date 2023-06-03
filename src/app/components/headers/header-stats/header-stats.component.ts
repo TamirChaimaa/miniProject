@@ -50,7 +50,19 @@ export class HeaderStatsComponent implements OnInit {
 
   getStatistic(){
     this.loadingCardStates = true
-    // this.dataService.sendGetRequest('')
+    this.dataService.sendGetRequest('statistics', '').subscribe((resp: any) => {
+      if(resp.data){
+        this.cardsStates[0].statTitle = resp.data.patients;
+        this.cardsStates[1].statTitle = resp.data.secritaries;
+        this.cardsStates[2].statTitle = resp.data.appointement;
+        this.cardsStates[3].statTitle = resp.data.documents;
+      }
+      this.loadingCardStates = false
+
+    }, err =>{
+      this.loadingCardStates = false
+
+    })
   }
 
 

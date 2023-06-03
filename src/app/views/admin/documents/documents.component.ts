@@ -10,14 +10,15 @@ export class DocumentsComponent {
     {
       name: "id",
       title: "id",
-      search: true
+    },
+    {
+      name: "cin",
+      title: "CIN",
+      search: true,
     },
     {
       name: "fullname",
       title: "patient name ",
-      parent: "user",
-      search: true,
-      sort: true,
     },
      {
       name: "appointment",
@@ -27,6 +28,10 @@ export class DocumentsComponent {
     {
       name: "status",
       title: "status",
+    },
+    {
+      name: "document",
+      title: "document",
     },
     {
       name: "createdat",

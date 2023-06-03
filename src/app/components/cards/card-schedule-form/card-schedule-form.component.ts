@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Output, SimpleChanges, EventEmitter } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 import { ToastrNotificationService } from 'src/app/services/toastr-notification.service';
-
 @Component({
   selector: 'app-card-schedule-form',
   templateUrl: './card-schedule-form.component.html',
   styleUrls: ['./card-schedule-form.component.scss']
 })
-export class CardScheduleFormComponent implements OnInit {
+export class CardScheduleFormComponent implements OnInit, OnChanges {
   peroids = [];
-
+  @Input() codeCin = '';
+  @Output() refresh = new EventEmitter();
   appntId: any;
   form = new UntypedFormGroup({
     cin: new UntypedFormControl('', [
@@ -37,6 +37,13 @@ export class CardScheduleFormComponent implements OnInit {
   ngOnInit(): void {
     this.init()
   }
+  ngOnChanges(changes: SimpleChanges): void {
+      if( changes['codeCin']){
+        console.log(this.codeCin);
+        
+        this.cin.setValue(this.codeCin);
+      }
+  }
 
   get cin() {
     return this.form.get('cin');
@@ -44,7 +51,6 @@ export class CardScheduleFormComponent implements OnInit {
 
   extractTime(index) {
     const t = this.form.get('time').value;
-    console.log(t);
 
     const timeRegex = /\b(\d{1,2}:\d{2})\b/g;
 
@@ -68,7 +74,6 @@ export class CardScheduleFormComponent implements OnInit {
 
 
   get data() {
-    console.log(this.startTime);
 
     const res = {
       patient_CIN: this.cin.value,
@@ -83,18 +88,24 @@ export class CardScheduleFormComponent implements OnInit {
 
   save() {
     this.errors = undefined
-    console.log(this.data);
     this.submitLoading = true;
     let request = {
       url: 'appointments',
       method: this.appntId ? 'put' : 'post',
-      message: 'Modification Success' ? 'put' : 'Added success'
+      message: 'Modification Success'
     }
     if (this.appntId) request.url += '/' + this.appntId;
     this.dataService.sendRequest(request.method == 'put' ? 'put' : 'post', request.url, this.data).subscribe((resp: any) => {
       console.log(resp);
       this.toastrNotificationService.showSuccess(request.message, '')
-      this.router.navigateByUrl('admin/patients')
+      if(this.codeCin.length){
+        this.refresh.emit();
+        this.router.navigateByUrl('profile')
+
+      }else{
+        this.router.navigateByUrl('admin/patients')
+
+      }
       this.submitLoading = false;
     }, err => {
       console.log(err);

@@ -1,0 +1,27 @@
+
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg my-6">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <tbody>
+            <tr
+            *ngFor="let key of data.attributes | keyvalue;let index = index"
+             class="bg-white border border-solid border-gray-300">
+                <td *ngIf="key.key != 'created_at' && key.key != 'updated_at' && key.key != 'appointement'" scope="col" 
+                class=" text-center w-1/2 bg-gray-100 px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
+                
+                >
+                    {{ key.key }}
+                </td>
+                <td  *ngIf="key.key != 'created_at' && key.key != 'updated_at' && key.key != 'appointement'" class=" text-center  px-6 py-4">
+                    <div *ngIf="key.key == 'cin_image'" class="p-4 flex justify-center items-center">
+                        <img *ngIf="key.key == 'cin_image'" 
+                        [src]="key.value" class="w-40 " alt="">
+                    </div>
+      
+                   <span *ngIf="key.key != 'cin_image'">
+                    {{ key.value }}                    
+                   </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

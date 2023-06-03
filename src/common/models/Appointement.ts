@@ -6,6 +6,7 @@ export class Appointement {
     start_time: string ="";
     updated_at: string ="";
     patient: any;
+    status: any;
     constructor(data: any){
         this.id = data.id;
         this.reason = data.attributes.reason;
@@ -14,6 +15,7 @@ export class Appointement {
         this.created_at = data.attributes.created_at;
         this.updated_at = data.attributes.updated_at;
         this.patient = data.relationships
+        this.status = data.attributes.status
     }
 
     checkDateOfEvent(year: number, month: number){

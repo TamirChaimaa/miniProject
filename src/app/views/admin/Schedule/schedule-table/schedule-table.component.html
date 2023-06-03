@@ -1,0 +1,9 @@
+<app-card-table 
+title="Schedule Table" 
+ [headers]="headers"
+ [dataPassing]="data"
+ createUrl="/admin/schedule/scheduleForm"
+ getUrl="appointments"
+ (searchEvent)="searchEvent.emit($event)"
+ (changeStatusEvent)="changeStatusEvent.emit($event)"
+ ></app-card-table>

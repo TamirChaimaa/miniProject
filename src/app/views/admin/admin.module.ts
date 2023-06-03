@@ -11,6 +11,10 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { DocumentsComponent } from './documents/documents.component';
 import { DocumentFormComponent } from './documents/document-form/document-form.component';
+import { ScheduleSchemaComponent } from './Schedule/schedule-schema/schedule-schema.component';
+import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ScheduleTableComponent } from './Schedule/schedule-table/schedule-table.component';
 
 
 @NgModule({
@@ -23,13 +27,17 @@ import { DocumentFormComponent } from './documents/document-form/document-form.c
     PatientFormComponent,
     ScheduleFormComponent,
     DocumentsComponent,
-    DocumentFormComponent
+    DocumentFormComponent,
+    ScheduleSchemaComponent,
+    ScheduleTableComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
-    ComponentsModule
-
+    ComponentsModule,
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class AdminModule { }

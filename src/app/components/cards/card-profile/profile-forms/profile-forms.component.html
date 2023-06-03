@@ -1,0 +1,174 @@
+<form *ngIf="data" [formGroup]="form" (submit)="save()"
+class="my-4"
+>
+    <div class="relative w-full my-3">
+      <label class="block uppercase text-black text-xs font-bold mb-2" htmlFor="fullname">
+        Fullname
+      </label>
+      <input [ngClass]="errors &&  errors.FullName ? 'border-2 border-red-500' : ''" id="fullname" name="fullname"
+       formControlName="fullname" type="text"
+        class="border-0 px-3 py-3 placeholder-blueGray-300 text-black bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+        placeholder="fullname" />
+
+        <p  *ngIf="errors  && errors.FullName" class="mt-2 text-xs text-red-600 dark:text-red-500" >
+          <span class="block" *ngFor="let err of errors.FullName">
+           {{ err }}
+          </span>
+         </p>
+    </div>
+  
+    <div class="relative w-full my-3">
+      <label class="block uppercase text-black text-xs font-bold mb-2" htmlFor="email">
+        ENTER CIN OF PATIENT
+      </label>
+      <input [ngClass]="errors  && errors.CIN ? 'border-2 border-red-500' : ''" id="CIN" name="CIN"
+       formControlName="cin"
+        class="border-0 px-3 py-3 placeholder-blueGray-300 text-black bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+        placeholder="CIN" />
+
+        <p  *ngIf="errors  && errors.CIN" class="mt-2 text-xs text-red-600 dark:text-red-500" >
+          <span class="block" *ngFor="let err of errors.CIN">
+           {{ err }}
+          </span>
+         </p>
+    </div>
+
+
+    <div class="relative w-full my-3">
+      <label class="block uppercase text-black text-xs font-bold mb-2" htmlFor="Age">
+        Age
+      </label>
+      <input [ngClass]="errors  && errors.Age ? 'border-2 border-red-500' : ''" id="Age" name="Age"
+       formControlName="age" 
+        class="border-0 px-3 py-3 placeholder-blueGray-300 text-black bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+        placeholder="Age" />
+
+        <p  *ngIf="errors  && errors.Age" class="mt-2 text-xs text-red-600 dark:text-red-500" >
+          <span class="block" *ngFor="let err of errors.Age">
+           {{ err }}
+          </span>
+         </p>
+    </div>
+
+    <div class="relative w-full my-3">
+      <label class="block uppercase text-black text-xs font-bold mb-2" htmlFor="Age">
+        Date of Birth
+      </label>
+      <input [ngClass]="errors  && errors.DateOfBirth ? 'border-2 border-red-500' : ''" id="dateOfBirth" name="dateOfBirth"
+       formControlName="dateOfBirth"  type="date"
+        class="border-0 px-3 py-3 placeholder-blueGray-300 text-black bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+        placeholder="Date Of Birth" />
+
+        <p  *ngIf="errors  && errors.DateOfBirth" class="mt-2 text-xs text-red-600 dark:text-red-500" >
+          <span class="block" *ngFor="let err of errors.DateOfBirth">
+           {{ err }}
+          </span>
+         </p>
+    </div>
+
+    <div class="relative w-full my-3">
+      <label class="block uppercase text-black text-xs font-bold mb-2" htmlFor="PhoneNumber">
+        Phone Number
+      </label>
+      <input [ngClass]="errors  && errors.PhoneNumber ? 'border-2 border-red-500' : ''" id="PhoneNumber" name="PhoneNumber"
+       formControlName="phoneNumber" 
+        class="border-0 px-3 py-3 placeholder-blueGray-300 text-black bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+        placeholder="Phone Number" />
+
+        <p  *ngIf="errors  && errors.PhoneNumber" class="mt-2 text-xs text-red-600 dark:text-red-500" >
+          <span class="block" *ngFor="let err of errors.PhoneNumber">
+           {{ err }}
+          </span>
+         </p>
+    </div>
+
+    <div class="relative w-full my-3">
+      <label class="block uppercase text-black text-xs font-bold mb-2" htmlFor="Adresse">
+        Adresse
+      </label>
+      <input [ngClass]="errors  && errors.Adress ? 'border-2 border-red-500' : ''" id="Adresse" name="Adresse"
+       formControlName="adresse" 
+        class="border-0 px-3 py-3 placeholder-blueGray-300 text-black bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+        placeholder="Adresse" />
+
+        <p  *ngIf="errors  && errors.Adress" class="mt-2 text-xs text-red-600 dark:text-red-500" >
+          <span class="block" *ngFor="let err of errors.Adress">
+           {{ err }}
+          </span>
+         </p>
+    </div>
+  
+    <div class="relative w-full my-3">
+      <label class="block uppercase text-black text-xs font-bold mb-2" htmlFor="password">
+        Password
+      </label>
+      <input [ngClass]="errors && errors.Password ? 'border-2 border-red-500' : ''" id="password" name="password"
+       formControlName="password" type="password"
+        class="border-0 px-3 py-3 placeholder-blueGray-300 text-black bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+        placeholder="Password" />
+
+        <p  *ngIf="errors  && errors.Password" class="mt-2 text-xs text-red-600 dark:text-red-500" >
+          <span class="block" *ngFor="let err of errors.Password">
+           {{ err }}
+          </span>
+         </p>
+    </div>
+    
+    <div class="relative w-full my-3">
+      <label class="block uppercase text-black text-xs font-bold mb-2" htmlFor="passwordConfirmation">
+        Password confirmation
+      </label>
+      <input [ngClass]="errors  && errors.Password_Confirmation ? 'border-2 border-red-500' : ''" id="passwordConfirmation"
+       name="passwordConfirmation"
+       formControlName="passwordConfirmation" type="password"
+        class="border-0 px-3 py-3 placeholder-blueGray-300 text-black bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+        placeholder="Password Confirmation" />
+
+        <p  *ngIf="errors  && errors.Password_Confirmation" class="mt-2 text-xs text-red-600 dark:text-red-500" >
+          <span class="block" *ngFor="let err of errors.Password_Confirmation">
+           {{ err }}
+          </span>
+         </p>
+    </div>
+
+    
+    <div class="w-full md:w-1/2 px-3 my-6 ">
+      <label class=" text-emerald-500 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+        for="grid-first-name">
+        import cin
+      </label>
+      <input formControlName="cinImg"   (change)="importCin($event)" [ngClass]="errors && errors.cin_image ? 'input-class border border-red-500  bg-gray-200' : 'input-class'"
+        id="grid-first-name" type="file">
+        <p  *ngIf="errors  && errors.cin_image" class="mt-2 text-xs text-red-600 dark:text-red-500" >
+          <span class="block" *ngFor="let err of errors.cin_image">
+           {{ err }}
+          </span>
+         </p>
+    </div>
+  
+    <div class="text-center mt-6">
+      <button type="submit" [disabled]="submitLoading" [ngClass]="submitLoading ? 'cursor-not-allowed opacity-80' : ''"
+        class="bg-emerald-500 text-white active:text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150">
+        <span *ngIf="submitLoading">
+          <svg role="status" class="inline w-4 h-4 mx-2 text-white animate-spin" viewBox="0 0 100 101" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+              fill="#E5E7EB" />
+            <path
+              d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+              fill="currentColor" />
+          </svg>
+        </span>
+        <span>
+          Save
+        </span>
+      </button>
+    </div>
+</form>
+
+<div *ngIf="!data" class="px-4">
+    <div class="border-b pb-4 border-gray-400 border-dashed skeleton-animation">
+        <div *ngFor="let elm of arr" class="h-8 w-full bg-gray-200 rounded my-4"></div>
+    </div>
+</div>

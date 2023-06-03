@@ -70,7 +70,7 @@
           </a>
         </li>
 
-        <li class="items-center">
+        <li *ngIf="role == 'admin'" class="items-center">
           <a [routerLink]="['/admin/secritaries']" class="text-xs uppercase py-3 font-bold block" routerLinkActive
             #Secretaries="routerLinkActive" [ngClass]="
             Secretaries.isActive
@@ -99,30 +99,22 @@
         </li>
 
         <li class="items-center">
-          <a [routerLink]="['/admin/schedule']" class="text-xs uppercase py-3 font-bold block" routerLinkActive
+          <a [routerLink]="['/admin/schedule']" class="text-xs uppercase py-3 font-bold flex justify-between items-center" routerLinkActive
             #schedule="routerLinkActive" [ngClass]="
                schedule.isActive
                 ? 'text-red-600 hover:text-red-700'
-                : 'text-blueGray-700 hover:text-blueGray-500'
-            ">
-            <i class="far fa-calendar mr-2 text-sm" [ngClass]="
-               schedule.isActive ? 'opacity-75' : 'text-blueGray-300'
-              "></i>
-            Schedule
-          </a>
-        </li>
+                : 'text-blueGray-700 hover:text-blueGray-500'">
+                <span>
+                  <i class="far fa-calendar mr-2 text-sm" [ngClass]="
+                  schedule.isActive ? 'opacity-75' : 'text-blueGray-300'
+                 "></i>
+               Schedule
+                </span>
+                <span *ngIf="scheduleAttente" class="bg-gray-100 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-blue-400 border border-blue-400">
+                  <svg aria-hidden="true" class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path></svg>
+                  {{ scheduleAttente }}
+                </span>
 
-        <li class="items-center">
-          <a [routerLink]="['/admin/documents']" class="text-xs uppercase py-3 font-bold block" routerLinkActive
-            #documents="routerLinkActive" [ngClass]="
-              documents.isActive
-                ? 'text-red-600 hover:text-red-700'
-                : 'text-blueGray-700 hover:text-blueGray-500'
-            ">
-            <i class="far fa-file mr-2 text-sm" [ngClass]="
-              documents.isActive ? 'opacity-75' : 'text-blueGray-300'
-              "></i>
-            Documents
           </a>
         </li>
 

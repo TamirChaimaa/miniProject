@@ -6,7 +6,8 @@ import { AuthComponent } from 'src/app/layouts/auth/auth.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { FirstStepComponent } from './register/first-step/first-step.component';
+import { SecondStepComponent } from './register/second-step/second-step.component';
 
 
 @NgModule({
@@ -14,6 +15,8 @@ import { HttpClientModule } from '@angular/common/http';
     AuthComponent,
     LoginComponent,
     RegisterComponent,
+    FirstStepComponent,
+    SecondStepComponent,
   ],
   imports: [
     CommonModule,

@@ -11,6 +11,10 @@ import { ToastrNotificationService } from 'src/app/services/toastr-notification.
 })
 export class CardPatientFormComponent {
   patientId: any;
+  cinImage = {
+    file: undefined,
+    fileName: undefined
+  }
   form = new UntypedFormGroup({
     fullname: new UntypedFormControl('', [
       Validators.required,
@@ -27,6 +31,9 @@ export class CardPatientFormComponent {
     cin: new UntypedFormControl('', [
       Validators.required,
     ]),
+    cinImg: new UntypedFormControl('', [
+      Validators.required,
+    ]),
     adresse: new UntypedFormControl('', [
       Validators.required,
     ]),
@@ -38,7 +45,11 @@ export class CardPatientFormComponent {
     ]),
     passwordConfirmation: new UntypedFormControl('', [
       Validators.required,
-    ]),
+    ], 
+    
+    
+    
+    ),
   });
   submitLoading = false;
   errors;
@@ -49,9 +60,13 @@ export class CardPatientFormComponent {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((resp: any) => {
+      if(!resp.patient) return;
       console.log(JSON.parse(resp.patient));
-      this.patientId = JSON.parse(resp.patient).id
+      this.patientId = JSON.parse(resp.patient).cin
       this.form.patchValue(JSON.parse(resp.patient))
+      console.log(JSON.parse(resp.patient).cin_image);
+      
+      this.form.get('cinImg').setValue(JSON.parse(resp.patient).cin_image)
     })
   }
 
@@ -65,6 +80,10 @@ export class CardPatientFormComponent {
 
   get age() {
     return this.form.get('age');
+  }
+
+  get email() {
+    return this.form.get('email');
   }
 
   get dateOfBirth() {
@@ -87,22 +106,36 @@ export class CardPatientFormComponent {
     return this.form.get('passwordConfirmation');
   }
 
-  get data() {
-    const res = {
-      FullName: this.fullname.value,
-      PhoneNumber: this.phoneNumber.value,
-      Age: this.age.value,
-      DateOfBirth: this.dateOfBirth.value,
-      CIN: this.cin.value,
-      Adress: this.adresse.value,
-    }
-    if(this.password.value && this.password.value.length){
-      res['Password'] = this.password.value; 
-      res['Password_Confirmation'] = this.passwordConfirmation.value; 
-    }
 
-    return res;
+  
+  importCin(evt: any){
+    const image = evt.target.files[0];
+    this.cinImage.file = image;
+    this.cinImage.fileName = image.name;
+    
   }
+
+
+
+  
+  getFormData(){
+    const formData =  new FormData();
+    formData.append('FullName', this.fullname.value);
+    formData.append('PhoneNumber', this.phoneNumber.value);
+    formData.append('Age', this.age.value);
+    formData.append('CIN', this.cin.value);
+    formData.append('Adress', this.adresse.value);
+    formData.append('Email', this.email.value);
+    formData.append('DateOfBirth', this.dateOfBirth.value);
+    if(this.cinImage.file)
+    formData.append('cin_image', this.cinImage.file, 'cin');
+    if(this.password.value && this.password.value.length){
+      formData.append('Password', this.password.value); 
+      formData.append('Password_Confirmation', this.passwordConfirmation.value); 
+    }
+    return formData
+  }
+
 
   save() {
     this.submitLoading = true;
@@ -112,7 +145,7 @@ export class CardPatientFormComponent {
       message: 'Modification Success' ? 'put' : 'Added success'
     }
     if (this.patientId) request.url += '/' + this.patientId;
-    this.dataService.sendRequest(request.method == 'put' ? 'put' : 'post', request.url, this.data).subscribe((resp: any) => {
+    this.dataService.sendPostRequest(request.url, this.getFormData(), true).subscribe((resp: any) => {
       console.log(resp);
       this.toastrNotificationService.showSuccess(request.message, '')
       this.router.navigateByUrl('admin/patients')

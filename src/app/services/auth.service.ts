@@ -21,6 +21,16 @@ export class AuthService extends DataService{
     return this.sendPostRequest('register', data)
   }
 
+  registerPatient(data) {
+
+    return this.sendPostRequest('registerPatient', data )
+  }
+
+  continueRegister(data, isFormData?: boolean) {
+
+    return this.sendPostRequest('registerPatient', data, true )
+  }
+
   updateProfile(data: any, isFormData?: boolean){
     return this.sendPostRequest('updateProfile', data, isFormData)
   }

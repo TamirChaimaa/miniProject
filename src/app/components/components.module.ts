@@ -11,9 +11,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { FooterComponent } from './footers/footer/footer.component';
 import { FooterSmallComponent } from './footers/footer-small/footer-small.component';
 import { FooterAdminComponent } from './footers/footer-admin/footer-admin.component';
-import { CardPageVisitsComponent } from './cards/card-page-visits/card-page-visits.component';
 import { CardProfileComponent } from './cards/card-profile/card-profile.component';
-import { CardSocialTrafficComponent } from './cards/card-social-traffic/card-social-traffic.component';
 import { CardStatsComponent } from './cards/card-stats/card-stats.component';
 import { CardTableComponent } from './cards/card-table/card-table.component';
 import { HeaderStatsComponent } from './headers/header-stats/header-stats.component';
@@ -26,6 +24,11 @@ import { CardPatientFormComponent } from './cards/card-patient-form/card-patient
 import { RouterModule } from '@angular/router';
 import { CardDocumentFormComponent } from './cards/card-document-form/card-document-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StatusComponent } from './status/status.component';
+import { ProfileFormsComponent } from './cards/card-profile/profile-forms/profile-forms.component';
+import { ProfileDetailsComponent } from './cards/card-profile/profile-details/profile-details.component';
+import { ProfileAppointementComponent } from './cards/card-profile/profile-appointement/profile-appointement.component';
+import { ProfileApointFormsComponent } from './cards/card-profile/profile-apoint-forms/profile-apoint-forms.component';
 
 
 
@@ -42,9 +45,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FooterComponent,
     FooterSmallComponent,
     FooterAdminComponent,
-    CardPageVisitsComponent,
     CardProfileComponent,
-    CardSocialTrafficComponent,
     CardStatsComponent,
     CardTableComponent,
     HeaderStatsComponent,
@@ -54,7 +55,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CardScheduleFormComponent,
     CardSecretaryFormComponent,
     CardPatientFormComponent,
-    CardDocumentFormComponent
+    CardDocumentFormComponent,
+    StatusComponent,
+    ProfileFormsComponent,
+    ProfileDetailsComponent,
+    ProfileAppointementComponent,
+    ProfileApointFormsComponent,
   ],
   imports: [
     CommonModule,
@@ -75,9 +81,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FooterComponent,
     FooterSmallComponent,
     FooterAdminComponent,
-    CardPageVisitsComponent,
     CardProfileComponent,
-    CardSocialTrafficComponent,
     CardStatsComponent,
     CardTableComponent,
     HeaderStatsComponent,
@@ -87,7 +91,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CardScheduleFormComponent,
     CardSecretaryFormComponent,
     CardPatientFormComponent,
-    CardDocumentFormComponent
+    CardDocumentFormComponent,
+    StatusComponent,
+    ProfileFormsComponent,
+    ProfileDetailsComponent,
+    ProfileAppointementComponent,
+    ProfileApointFormsComponent,
 
   ]
 })

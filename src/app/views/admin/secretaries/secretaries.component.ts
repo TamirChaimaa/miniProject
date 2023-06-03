@@ -10,28 +10,24 @@ export class SecretariesComponent implements OnInit {
     {
       name: "id",
       title: "id",
-      search: true
-    },
-    {
-      name: "fullname",
-      title: "fullname ",
-      search: true,
-      sort: true,
     },
     {
       name: "CIN",
       title: "CIN",
     },
+    {
+      name: "name",
+      title: "fullname ",
+    },
      {
-      name: "PhoneNumber",
-      title: "PhoneNumber",
+      name: "email",
+      title: "email",
       sort: true,
     },
     {
       name: "createdat",
       title: "created at",
       type: "date",
-      sort: true
     },
   ];
 

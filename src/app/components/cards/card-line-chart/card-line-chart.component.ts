@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit } from "@angular/core";
-import { Chart } from "chart.js";
+import { CategoryScale, Chart, Legend, LineController, LineElement, LinearScale, PointElement, Title, Tooltip } from "chart.js";
 
 @Component({
   selector: "app-card-line-chart",
@@ -10,6 +10,8 @@ export class CardLineChartComponent implements OnInit {
 
   ngOnInit() {}
   ngAfterViewInit() {
+    Chart.register(LineController, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
+
     const config: any = {
       type: "line",
       data: {
@@ -110,7 +112,7 @@ export class CardLineChartComponent implements OnInit {
         },
       },
     };
-    let ctx: any = document.getElementById("line-chart") as HTMLCanvasElement;
+    let ctx: any = document.getElementById("line-chart") as HTMLCanvasElement;    
     ctx = ctx.getContext("2d");
     new Chart(ctx, config);
   }

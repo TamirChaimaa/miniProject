@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
 
 interface MessengerData {
-  type: 'header-title',
+  type: 'header-title' | 'minise_schedule',
   data: any
 }
 

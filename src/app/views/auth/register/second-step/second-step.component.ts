@@ -128,7 +128,7 @@ export class SecondStepComponent implements OnChanges {
         if(resp.data == this.Cin.value ){
           resolve(true)
         }else{
-          reject('your infotmation not integred with your cin image');
+          reject('your infotmation not integrated with your cin image');
         }
       }, err => {
         reject(err);

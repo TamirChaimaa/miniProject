@@ -1,18 +1,39 @@
 import { Component, OnInit, AfterViewInit } from "@angular/core";
 import { CategoryScale, Chart, Legend, LineController, LineElement, LinearScale, PointElement, Title, Tooltip } from "chart.js";
+import { DataService } from "src/app/services/data.service";
 
 @Component({
   selector: "app-card-line-chart",
   templateUrl: "./card-line-chart.component.html",
 })
 export class CardLineChartComponent implements OnInit {
-  constructor() {}
+  data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  config;
+  constructor(private dataService: DataService) {}
 
-  ngOnInit() {}
-  ngAfterViewInit() {
-    Chart.register(LineController, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
+  ngOnInit() {
+    this.dataService.sendGetRequest('appointments/statistics', {}).subscribe((resp: any[])=>{
+      // resp.forEach((element, index) => {
+      //   console.log(index);
+        
+      // });
+      for (const key in resp) {
+        if (resp.hasOwnProperty(key)) {
+          console.log(parseInt(key)-1);
+          
+          this.data[parseInt(key)-1] = parseInt(resp[key]);
+        }
+      }
+      console.log(resp, this.data);
+      
 
-    const config: any = {
+      this.initChart();
+      
+    })
+  }
+
+  initChart(){
+    this.config = {
       type: "line",
       data: {
         labels: [
@@ -23,21 +44,19 @@ export class CardLineChartComponent implements OnInit {
           "May",
           "June",
           "July",
+          "Aout",
+          "September",
+          "October",
+          "November",
+          "December",
         ],
         datasets: [
           {
             label: new Date().getFullYear(),
             backgroundColor: "#4c51bf",
             borderColor: "#4c51bf",
-            data: [65, 78, 66, 44, 56, 67, 75],
+            data: this.data,
             fill: false,
-          },
-          {
-            label: new Date().getFullYear() - 1,
-            fill: false,
-            backgroundColor: "#fff",
-            borderColor: "#fff",
-            data: [40, 68, 86, 74, 56, 60, 87],
           },
         ],
       },
@@ -114,6 +133,11 @@ export class CardLineChartComponent implements OnInit {
     };
     let ctx: any = document.getElementById("line-chart") as HTMLCanvasElement;    
     ctx = ctx.getContext("2d");
-    new Chart(ctx, config);
+    new Chart(ctx, this.config);
+  }
+  ngAfterViewInit() {
+    Chart.register(LineController, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
+
+
   }
 }

@@ -18,4 +18,9 @@ export class GlobalService {
   checkCinImage(url: string, data: any, isFormData?: boolean): Observable<object>{
     return this.http.post(DJANGO_URL + url, data);
   }
+
+  downloadPDF(pdfUrl: string): Observable<object> {
+
+    return this.http.get(pdfUrl, { responseType: 'blob' });
+  }
 }

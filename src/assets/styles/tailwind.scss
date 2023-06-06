@@ -1083,6 +1083,9 @@ select {
 }
 
 @media (min-width: 1024px) {
+  .divide-lg-y-none{
+    border: none;
+  }
   .container {
     max-width: 1024px;
   }
@@ -1113,6 +1116,8 @@ select {
 .space-x-reverse > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 1;
 }
+
+
 
 .divide-y > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-y-reverse: 0;
@@ -2409,6 +2414,9 @@ button.bg-emerald-500:hover {
 
 .-mt-64 {
   margin-top: -16rem;
+}
+.-mt-72 {
+  margin-top: -24rem;
 }
 
 .last\:mr-0:last-child {

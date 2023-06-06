@@ -86,13 +86,16 @@
           </td>
           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
             <div class="flex  ">
-              <button  (click)="cickAction(btn, rows[0], index)" *ngFor="let btn of buttons" [class]="btn.style + ' text-white font-bold p-2 px-3 rounded'">
-                <span *ngIf="btn.type == 'remove'">
-                  <i [class]="btn.icon+' removeId'+rows[0]"></i>
+              <button [hidden]="btn.type == 'download' && realData[index].status != 'passed'"  (click)="cickAction(btn, rows[0], index)" *ngFor="let btn of buttons" [class]="btn.style + ' text-white font-bold p-2 px-3 rounded'">
+                <span>
+                  <span *ngIf="btn.type == 'remove'">
+                    <i [class]="btn.icon+' removeId'+rows[0]"></i>
+                  </span>
+                  <span *ngIf="btn.type != 'remove'">
+                    <i [class]="btn.icon"></i>
+                  </span>
                 </span>
-                <span *ngIf="btn.type != 'remove'">
-                  <i [class]="btn.icon"></i>
-                </span>
+
               </button>
             </div>
           </td>

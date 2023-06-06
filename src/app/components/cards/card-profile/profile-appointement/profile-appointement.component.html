@@ -1,7 +1,7 @@
 <div class="relative bg-white  my-6 flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded">
     <div class="block w-full  overflow-x-auto my-10">
         <div class="w-full flex justify-end items-center p-4 ">
-            <button (click)="goToForm.emit()" class="  bg-indigo-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <button (click)="goToForm.emit()" class="  bg-indigo-500 hover:bg-blue-700 text-white text-xs md:text-normal font-bold py-2 px-4 rounded">
                 <a >
                   <i class="fas fa-plus"></i> New Appointement
                 </a>
@@ -23,25 +23,25 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let appnt of appointemnts.attributes">
+                <tr class="text-xs" *ngFor="let appnt of appointemnts.attributes">
                     <td
-                        class="px-6 text-black  align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                        class="px-1 md:px-6 text-black  align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                         {{ appnt.id }}
                     </td>
-                    <td>
+                    <td class="whitespace-nowrap">
                         {{ appnt.start_time }}
                     </td>
-                    <td>
+                    <td class="whitespace-nowrap">
                         {{ appnt.end_time }}
                     </td>
-                    <td>
+                    <td class="px-2">
                         <app-status 
                         (clicked)="changeStatus(appnt);"
                         [status]="appnt.status"
                         ></app-status>
                     </td>
                     <td *ngIf="appnt.status == 'passed'">
-                        <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                        <a (click)="download(appnt.patient_id)" class="font-medium cursor-pointer text-blue-600 dark:text-blue-500 hover:underline">
                             Download document
                         </a>
                     </td>

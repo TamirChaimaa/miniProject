@@ -35,13 +35,6 @@ export class HeaderStatsComponent implements OnInit {
     statIconName:"fas fa-notes-medical",
     statIconColor:"bg-indigo-500"
   },
-  {
-    statSubtitle: 'Number of Documents',
-    statTitle: '',
-    statPercentColor:"text-orange-500",
-    statIconName:"fas fa-file",
-    statIconColor:"bg-indigo-500"
-  }
 ]
   constructor(private dataService: DataService) {}
   ngOnInit(): void {
@@ -55,7 +48,7 @@ export class HeaderStatsComponent implements OnInit {
         this.cardsStates[0].statTitle = resp.data.patients;
         this.cardsStates[1].statTitle = resp.data.secritaries;
         this.cardsStates[2].statTitle = resp.data.appointement;
-        this.cardsStates[3].statTitle = resp.data.documents;
+        // this.cardsStates[3].statTitle = resp.data.documents;
       }
       this.loadingCardStates = false
 

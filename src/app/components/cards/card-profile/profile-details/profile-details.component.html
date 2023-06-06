@@ -14,7 +14,7 @@
                 <td  *ngIf="key.key != 'created_at' && key.key != 'updated_at' && key.key != 'appointement'" class=" text-center  px-6 py-4">
                     <div *ngIf="key.key == 'cin_image'" class="p-4 flex justify-center items-center">
                         <img *ngIf="key.key == 'cin_image'" 
-                        [src]="key.value" class="w-40 " alt="">
+                        [src]="key.value" class="w-72 md:w-40 " alt="">
                     </div>
       
                    <span *ngIf="key.key != 'cin_image'">

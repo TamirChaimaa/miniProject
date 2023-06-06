@@ -28,20 +28,20 @@
     >
 
 
-      <ul class="flex  flex-col lg:flex-row list-none lg:ml-auto">
-        <li *ngIf="!isAuth" class="flex items-center">
+      <ul class="flex   flex-col lg:flex-row list-none lg:ml-auto">
+        <li *ngIf="!isAuth" class="flex items-center  ">
           <a
           [routerLink]="['/auth']"
-          class=" text-white cursor-pointer text-sm font-semibold leading-relaxed inline-block mx-4 py-2 whitespace-nowrap "
+          class=" text-dark lg:text-white  cursor-pointer text-sm font-semibold leading-relaxed inline-block mx-4 py-2 whitespace-nowrap "
         >
           Login
         </a>
         </li>
 
-        <li *ngIf="!isAuth"  class="flex items-center">
+        <li *ngIf="!isAuth"  class="flex  items-center">
           <a
           [routerLink]="['/auth/register']"
-          class="text-white  cursor-pointer text-sm font-semibold leading-relaxed inline-block mx-4 py-2 whitespace-nowrap "
+          class="text-dark lg:text-white   cursor-pointer text-sm font-semibold leading-relaxed inline-block mx-4 py-2 whitespace-nowrap "
         >
           Register
         </a>
@@ -49,8 +49,7 @@
         <li *ngIf="isAuth"  class="flex items-center">
           <a
           (click)="logout()"
-
-          class="text-white cursor-pointer text-sm font-semibold leading-relaxed inline-block mx-4 py-2 whitespace-nowrap "
+          class="text-dark lg:text-white cursor-pointer text-sm font-semibold leading-relaxed inline-block mx-4 py-2 whitespace-nowrap "
         >
           Logout
         </a>

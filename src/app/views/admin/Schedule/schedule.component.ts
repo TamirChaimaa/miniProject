@@ -61,6 +61,7 @@ constructor(
         this.dataService.sendPutRequest('appointments' + '/' + apnt.id + '/changeStatus', 
         {currentStatus: statusClicked}).subscribe((resp: any) => {
           apnt.status = resp.data.attributes.status;
+          this.modulesMessengerService.sendMessage({type:'minise_schedule', data: -1});
           const index = this.data.findIndex(elm=> elm.id == apnt.id);
           d[index].attributes.status = resp.data.attributes.status
           this.toastrNotificationService.showSuccess('change status Success', '')

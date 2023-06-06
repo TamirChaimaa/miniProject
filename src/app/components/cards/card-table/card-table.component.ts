@@ -1,7 +1,9 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from "@angular/core";
 import { Router } from "@angular/router";
 import { DataService } from "src/app/services/data.service";
+import { GlobalService } from "src/app/services/global.service";
 import { ToastrNotificationService } from "src/app/services/toastr-notification.service";
+import { DOMAIN_URL } from "src/common/constants";
 import Swal from "sweetalert2";
 
 @Component({
@@ -48,7 +50,8 @@ export class CardTableComponent implements OnInit, OnChanges {
 
   constructor(private dataService: DataService,
     private toastrNotificationService: ToastrNotificationService,
-    private router: Router
+    private router: Router,
+    private globalService: GlobalService
   ) { }
 
   ngOnInit(): void {
@@ -226,14 +229,26 @@ export class CardTableComponent implements OnInit, OnChanges {
 
     if (btn.type == 'download') {
       if (this.getUrl == 'appointments') {        
-        
         this.dataService.sendGetRequest(`patient/${this.realData[index]['patientId']}/report-pdf`, { }).subscribe((resp: any) => {
+          const downloadPDF = (url: string): void => {
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'file.pdf';
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';            
+            link.click();
+          };
+          const pdfUrl = DOMAIN_URL + '/storage/pdfs/' +  resp.data.pdf_url;
+          downloadPDF(pdfUrl);
         });
         
       }
     }
 
   }
+
+
+
 
   search(query?) {
 
